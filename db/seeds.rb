@@ -7,3 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 admin = Admin.new(:email => 'admin@example.com', :password => 'admin1234')
 admin.save!
+
