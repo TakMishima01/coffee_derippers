@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_24_221803) do
+ActiveRecord::Schema.define(version: 2022_12_29_210802) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,6 +24,44 @@ ActiveRecord::Schema.define(version: 2022_12_24_221803) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.integer "recipe_id", null: false
+    t.integer "user_id", null: false
+    t.text "recipe_coment", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "extraction_details", force: :cascade do |t|
+    t.integer "recipe_id", null: false
+    t.datetime "start_at", null: false
+    t.datetime "end_at"
+    t.integer "pouring_amount"
+    t.text "note"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.integer "production_area_id", null: false
+    t.integer "user_id", null: false
+    t.string "name", null: false
+    t.string "coffee_beans_name", null: false
+    t.integer "roast", default: 1, null: false
+    t.integer "amount", null: false
+    t.integer "grind", default: 2, null: false
+    t.integer "temperature", null: false
+    t.integer "total_pouring_amount"
+    t.integer "extraction_amount"
+    t.integer "total_extraction_time", null: false
+    t.string "dripper", null: false
+    t.string "paper", null: false
+    t.text "point"
+    t.boolean "status", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -33,6 +71,7 @@ ActiveRecord::Schema.define(version: 2022_12_24_221803) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_deleted", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
