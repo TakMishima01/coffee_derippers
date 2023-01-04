@@ -2,9 +2,69 @@
   <!--===== sidebar start =====-->
       <%= render'layouts/sidebar' %>
   <!--===== sidebar end =====-->
-    <div class="col-10">
+    <div class="col-10 ps-0">
   <!--===== topbar start =====-->
       <%= render'layouts/header' %>
-  <!--===== sidebar end =====-->
+  <!--===== topbar end =====-->
+  <main class="bg-light">
+  <!--===== top_img start =====-->
+<div class="mb-4 px-0 card bg-dark text-white shadow-sm container-fluid">
+      <%= image_tag 'top_img.jpg', class: "top_img bd-placeholder-img bd-placeholder-img-lg card-img", height:"400px";%>
+      <div class="card-img-overlay d-flex">
+        <div class="top_img_bgcolor my-auto me-auto p-5 text-center">
+          <h5 class="card-title">CoffeeDrippers</h5>
+          <p class="card-text">ハンドドリップレシピ共有サイト</p>
+        </div>
+      </div>
+    </div>
+  <!--===== top_img end =====-->
+  <!--===== top_cards start =====-->
+  <div class="container mt-5">
+    <h2 class="mb-3">新着レシピ</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4 mx-5">
+      <div class="col">
+        <div class="card h-100">
+          <%= image_tag 'top_img.jpg', class: "card-img-top"%>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <%= image_tag 'top_img.jpg', class: "card-img-top"%>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <%= image_tag 'top_img.jpg', class: "card-img-top"%>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+  <div class="text-end mt-5 me-3" >
+    <p> すべての商品を見る ></p>
+  </div>
+  <!--===== top_cards end =====-->
+  </main>
+    </div>
     </div>
 
