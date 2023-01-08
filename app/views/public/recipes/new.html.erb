@@ -8,7 +8,118 @@
   <!--===== topbar end =====-->
     <main class="bg-light">
   <!--===== form start =====-->
-  
+   <%= form_with model: @recipe, url: recipe_path do |f| %>
+
+
+    <div class="form-group row">
+      <%= f.label :name, class: "col-form-label col-sm-2" %>
+      <div class="col-sm-4">
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :産地名, class: "col-form-label col-sm-2" %>
+      <div class="col-sm-4">
+        <%= f.text_field :production_area_id, autofocus: true, autocomplete: "production_area_id", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :使用豆, class: "col-form-label col-sm-3" %>
+      <div class="col-sm-4">
+        <%= f.text_field :coffee_beans_name, autofocus: true, autocomplete: "coffee_beans_name", class: "form-control" %>
+      </div>
+    </div>
+    
+
+
+    <div class="form-group row">
+      <%= f.label :焙煎度, class: "col-form-label col-sm-3 pl-0" %>
+      <div class="col-sm-4">
+      <%= f.text_field :roast, autofocus: true, autocomplete: "roast", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :豆使用量, class: "col-form-label col-sm-3" %>
+      <div class="col-sm-4">
+      <%= f.text_field :amount, autofocus: true, autocomplete: "amount", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :挽目, class: "col-form-label col-sm-3" %>
+      <div class="col-sm-4">
+      <%= f.text_field :grind, autofocus: true, autocomplete: "grind", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :湯温, class: "col-form-label col-sm-3 pl-0" %>
+      <div class="col-sm-4">
+      <%= f.text_field :temperature, autofocus: true, autocomplete: "temperature", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :注湯量, class: "col-form-label col-sm-3" %>
+      <div class="col-sm-4">
+      <%= f.text_field :total_pouring_amount, autofocus: true, autocomplete: "total_pouring_amount", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :抽出量, class: "col-form-label col-sm-3" %>
+      <div class="col-sm-4">
+      <%= f.text_field :extraction_amount, autofocus: true, autocomplete: "extraction_amount", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :抽出時間, class: "col-form-label col-sm-3 pl-0" %>
+      <div class="col-sm-4">
+      <%= f.text_field :total_extraction_time, autofocus: true, autocomplete: "total_extraction_time", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :使用ドリッパー, class: "col-form-label col-sm-3" %>
+      <div class="col-sm-4">
+      <%= f.text_field :dripper, autofocus: true, autocomplete: "dripper", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :使用ペーパー, class: "col-form-label col-sm-3" %>
+      <div class="col-sm-4">
+      <%= f.text_field :paper, autofocus: true, autocomplete: "paper", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :抽出のポイント・コツなど, class: "col-form-label col-sm-3" %>
+      <div class="col-sm-4">
+      <%= f.text_field :point, autofocus: true, autocomplete: "point", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :レシピの公開・非公開, class: "col-form-label col-sm-3" %>
+      <div class="col-sm-5 form-check">
+        <label class="font-weight-bold text-muted mr-4"><%= f.radio_button :status, false, {:checked => true}%> 公開</label>
+        <label class="font-weight-bold text-muted"><%= f.radio_button :status, true %> 非公開</label>
+      </div>
+    </div>
+
+    <div class="row actions my-3">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= f.submit "新規登録", class: "btn btn-success btn-block" %>
+      </div>
+    </div>
+  <% end %>
+
 
   <!--===== form end =====-->
     </main>

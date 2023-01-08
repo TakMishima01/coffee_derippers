@@ -32,7 +32,7 @@ class Public::RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:user_id, :name, :coffee_beans_name, :roast, :amount,
-    :grind, :temperature, :total_pouring_amount, :extraction_amount, :total_extraction_time, :dripper, :paper, :point, :status)
+    :grind, :temperature, :total_pouring_amount, :extraction_amount, :total_extraction_time, :dripper, :paper, :point, :status, :image)
   end
 
 end
