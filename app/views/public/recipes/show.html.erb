@@ -8,156 +8,199 @@
   <!--===== topbar end =====-->
     <main class="bg-light">
   <!--===== main start =====-->
-  <div class="container">
-    <div class="row py-4">
-      <h1 class="px-4 mb-0 mt-3"><%= @recipe.name %></h1>
-    </div>
-    <hr>
-  <div class="row">
-    <div class="recipe_flex">
-      <div class="col-5">
-        <%= image_tag @recipe.get_image(450,450) %>
-      </div>
-      <div class="col-6">
-      <table class="col-6 table table-bordered bg-white shadow-sm">
-        <tbody>
-          <tr>
-            <th scope="row">使用豆</th>
-            <td><%= @recipe.coffee_beans_name %></td>
-          </tr>
-          <tr>
-            <th scope="row">産地名</th>
-            <td><%= @recipe.production_area_id %></td>
-          </tr>
-          <tr>
-            <th scope="row">焙煎度</th>
-            <td><%= @recipe.roast_i18n %></td>
-          </tr>
-          <tr>
-            <th scope="row">使用量</th>
-            <td><%= @recipe.amount %>ml</td>
-          </tr>
-          <tr>
-            <th scope="row">挽目</th>
-            <td><%= @recipe.grind_i18n %></td>
-          </tr>
-          <tr>
-            <th scope="row">湯温</th>
-            <td><%= @recipe.temperature %>℃</td>
-          </tr>
-          <tr>
-            <th scope="row">注湯量</th>
-            <td><%= @recipe.total_pouring_amount %>ml</td>
-          </tr>
-          <tr>
-            <th scope="row">抽出量</th>
-            <td><%= @recipe.extraction_amount %>ml</td>
-          </tr>
-          <tr>
-            <th scope="row">ドリッパー</th>
-            <td><%= @recipe.dripper %></td>
-          </tr>
-          <tr>
-            <th scope="row">使用ペーパー</th>
-            <td><%= @recipe.paper %></td>
-          </tr>
-          <tr>
-            <th scope="row">抽出時間</th>
-            <td><%= @recipe.total_extraction_time %></td>
-          </tr>
-        </tbody>
-      </table>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-      <table class="table table-hover table-bordered bg-white shadow-sm">
-    <thead class="table-dark bg-secondary">
-      <tr>
-        <th scope="col">時間</th>
-        <th scope="col">注湯量（累計）</th>
-        <th scope="col">水流量（秒速）</th>
-        <th scope="col">備考</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td class="align-middle">
-            0秒
-          </td>
-          <td class="align-middle">
-            40ml(40ml)
-          </td>
-          <td class="align-middle">
-            4ml/s
-          </td>
-          <td class="align-middle">
-            縁までかける、スピンを行う
-          </td>
-        </tr>
-        <tr>
-          <td class="align-middle">
-            0秒
-          </td>
-          <td class="align-middle">
-            40ml(40ml)
-          </td>
-          <td class="align-middle">
-            4ml/s
-          </td>
-          <td class="align-middle">
-            縁までかける、スピンを行う
-          </td>
-        </tr>
-        <tr>
-          <td class="align-middle">
-            45秒
-          </td>
-          <td class="align-middle">
-            80ml(120ml)
-          </td>
-          <td class="align-middle">
-            5ml/s
-          </td>
-          <td class="align-middle">
-          </td>
-        </tr>
-        <tr>
-          <td class="align-middle">
-            1分30秒
-          </td>
-          <td class="align-middle">
-            90ml(210ml)
-          </td>
-          <td class="align-middle">
-            8ml/s
-          </td>
-          <td class="align-middle">
+      <div class="container">
+    <!--===== title start =====-->
+        <div class="row py-4">
+          <h1 class="px-4 mb-0 mt-3"><%= @recipe.name %></h1>
+        </div>
+    <!--===== title end =====-->
+        <hr>
+    <!--===== recipe_detail start =====-->
+        <div class="row">
+          <div class="recipe_flex">
+      <!--===== image start =====-->
+            <div class="col-5">
+              <%= image_tag @recipe.get_image(450,450) %>
+            </div>
+      <!--===== image end =====-->
+      <!--===== info start =====-->
+            <div class="col-5 ">
+              <%= link_to "#", class: "text-reset me-4" do %>
+                <%= @recipe.user.name %>
+              <% end %>
+              <button type="button" class="btn btn-info text-white btn-sm ms-4 mb-2">+レシピを保存</button>
+              <table class="col-6 table table-bordered bg-white shadow-sm">
+                <tbody>
+                  <tr>
+                    <th scope="row">使用豆</th>
+                    <td><%= @recipe.coffee_beans_name %></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">産地名</th>
+                    <td><%= @recipe.production_area_id %></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">焙煎度</th>
+                    <td><%= @recipe.roast_i18n %></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">使用量</th>
+                    <td><%= @recipe.amount %>ml</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">挽目</th>
+                    <td><%= @recipe.grind_i18n %></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">湯温</th>
+                    <td><%= @recipe.temperature %>℃</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">注湯量</th>
+                    <td><%= @recipe.total_pouring_amount %>ml</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">抽出量</th>
+                    <td><%= @recipe.extraction_amount %>ml</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">ドリッパー</th>
+                    <td><%= @recipe.dripper %></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">使用ペーパー</th>
+                    <td><%= @recipe.paper %></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">抽出時間</th>
+                    <td><%= @recipe.total_extraction_time %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-2"></div>
+      <!--===== info end =====-->
+          </div>
+        </div>
+    <!--===== recipe_detail end =====-->
+    <!--===== extraction_detail start =====-->
+        <div class="row">
+          <div class="col-10">
+            <table class="table table-hover table-bordered bg-white shadow-sm">
+            <thead class="table-dark bg-secondary">
+              <tr>
+                <th scope="col">時間</th>
+                <th scope="col">注湯量（累計）</th>
+                <th scope="col">水流量（秒速）</th>
+                <th scope="col">備考</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="align-middle">
+                  0秒
+                </td>
+                <td class="align-middle">
+                  40ml(40ml)
+                </td>
+                <td class="align-middle">
+                  4ml/s
+                </td>
+                <td class="align-middle">
+                  縁までかける、スピンを行う
+                </td>
+              </tr>
+              <tr>
+                <td class="align-middle">
+                  0秒
+                </td>
+                <td class="align-middle">
+                  40ml(40ml)
+                </td>
+                <td class="align-middle">
+                  4ml/s
+                </td>
+                <td class="align-middle">
+                  縁までかける、スピンを行う
+                </td>
+              </tr>
+              <tr>
+                <td class="align-middle">
+                  45秒
+                </td>
+                <td class="align-middle">
+                  80ml(120ml)
+                </td>
+                <td class="align-middle">
+                  5ml/s
+                </td>
+                <td class="align-middle">
+                </td>
+              </tr>
+              <tr>
+                <td class="align-middle">
+                  1分30秒
+                </td>
+                <td class="align-middle">
+                  90ml(210ml)
+                </td>
+                <td class="align-middle">
+                  8ml/s
+                </td>
+                <td class="align-middle">
 
-          </td>
-        </tr>
-        <tr>
-          <td class="align-middle">
-            3分30秒
-          </td>
-          <td class="align-middle">
-            終了
-          </td>
-          <td class="align-middle">
+                </td>
+              </tr>
+              <tr>
+                <td class="align-middle">
+                  3分30秒
+                </td>
+                <td class="align-middle">
+                  終了
+                </td>
+                <td class="align-middle">
 
-          </td>
-          <td class="align-middle">
-            落ちきるまで
-          </td>
-        </tr>
-    </tbody>
-  </table>
-  </div>
-  <div class="row">
-    <%= @recipe.point %>
-  </div>
+                </td>
+                <td class="align-middle">
+                  落ちきるまで
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          <div class="col-2"></div>
+        </div>
+    <!--===== extraction_detail end =====-->
+    <!--===== point start =====-->
+        <div class="row">
+          <div class="col-10">
+            <div class="point_box">
+              <span class="fw-bold">抽出のポイント・コツなど</span>
+              <p class="mt-2"><%= @recipe.point %></p>
+            </div>
+          </div>
+          <div class="col-2"></div>
+        </div>
+    <!--===== point end =====-->
+    <!--===== comments start =====-->
+        <div class="row">
+          <hr>
+          <h5 class="fw-bold">コメント</h5>
+          <div class="col-10">
+          <div class="comment_item">
+
+            <div class="comment_item_info no-wrap">
+              <p>user_name</p>
+              <p>2022年12月20日</p>
+            </div>
+            <div class="comment_item_text">
+              <p>淹れ方に困っていたので助かりました！参考にします。</p>
+            </div>
 </div>
-
+          </div>
+        </div>
+    <!--===== comments end =====-->
+      </div>
   <!--===== main end =====-->
     </main>
   </div>
