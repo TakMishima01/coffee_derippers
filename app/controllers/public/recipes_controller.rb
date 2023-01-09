@@ -3,6 +3,7 @@ class Public::RecipesController < ApplicationController
   end
 
   def show
+    @recipe = Recipe.find(params[:id])
   end
 
   def new
@@ -21,9 +22,17 @@ class Public::RecipesController < ApplicationController
   end
 
   def edit
+    @recipe = Recipe.find(params[:id])
   end
 
   def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipe_params)
+      redirect_to recipe_path(@recipe.id), notice: "変更が完了しました"
+    else
+      flash.now[:error] = "空欄があります"
+      render :edit
+    end
   end
 
   def destroy
