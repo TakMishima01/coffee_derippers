@@ -1,6 +1,6 @@
 class Public::RecipesController < ApplicationController
   def index
-    @recipe = Recipe.page(params[:page]).per(8)
+    @recipe = Recipe.where(status: 1).page(params[:page]).per(8)
   end
 
   def show
