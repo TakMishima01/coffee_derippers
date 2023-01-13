@@ -2,13 +2,121 @@
   <!--===== sidebar start =====-->
   <%= render'layouts/sidebar' %>
   <!--===== sidebar end =====-->
-  <div class="col-10">
+  <div class="col-10 ps-0">
   <!--===== topbar start =====-->
     <%= render'layouts/header' %>
   <!--===== topbar end =====-->
-  <!--===== recipe_index start =====-->
+    <main class="bg-light">
+  <!--===== form start =====-->
+  <div class="container px-5">
+  <!--===== title start =====-->
+        <div class="row py-4">
+          <h1 class="px-4 mb-0 mt-3">レシピ新規登録</h1>
+        </div>
+    <!--===== title end =====-->
+        <hr>
+   <%= form_with model: @recipe, url: recipes_path, class:"row g-4" do |f| %>
 
-  <!--===== recipe_index end =====-->
+    <div class="col-4">
+      <%= f.label :レシピトップ画像, for:"recipe_image" ,class: "form-label fw-bold fs-6" %>
+      <%= f.file_field :image, accept: "image/*", class: "form-control", id:"recipe_image" %>
+    </div>
+    <div class="col-8"></div>
+
+    <div class="col-4">
+      <%= f.label :レシピ名, for:"recipe_title", class: "form-label fw-bold fs-6" %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", id: "recipe_title" %>
+    </div>
+    <div class="col-4">
+      <%= f.label :産地名, for:"production_area_name", class: "form-label fw-bold fs-6" %>
+      <%= f.text_field :production_area_id, autofocus: true, autocomplete: "production_area_id", class: "form-control", id: "production_area_name" %>
+    </div>
+    <div class="col-4"></div>
+
+    <div class="col-4">
+      <%= f.label :使用豆, for:"beans_name",class: "form-label fw-bold fs-6" %>
+        <%= f.text_field :coffee_beans_name, autofocus: true, autocomplete: "coffee_beans_name", class: "form-control",id: "beans_name" %>
+    </div>
+    <div class="col-2">
+      <%= f.label :焙煎度, for: "select_roast", class: "form-label fw-bold fs-6" %>
+      <%= f.select :roast, Recipe.roasts.keys.map {|k| [I18n.t("enums.recipe.roast.#{k}"), k]}, {}, {class: "btn btn-outline-secondary dropdown-toggle form-select"} %>
+    </div>
+    <div class="col-2">
+      <%= f.label :豆使用量, for:"beans_amount", class: "form-label fw-bold fs-6" %>
+      <div class="input-group">
+        <%= f.text_field :amount, autofocus: true, autocomplete: "amount", class: "form-control", id: "beans_amount" %>
+        <div class="input-group-text">g</div>
+      </div>
+    </div>
+    <div class="col-2">
+      <%= f.label :挽目, for: "select_grind", class: "form-label fw-bold fs-6" %>
+      <%= f.select :grind, Recipe.grinds.keys.map {|k| [I18n.t("enums.recipe.grind.#{k}"), k]}, {}, {class: "btn btn btn-outline-secondary dropdown-toggle form-select"} %>
+    </div>
+    <div class="col-2"></div>
+
+    <div class="col-2">
+      <%= f.label :湯温, for: "temperature", class: "form-label fw-bold fs-6" %>
+      <div class="input-group">
+        <%= f.text_field :temperature, autofocus: true, autocomplete: "temperature", class: "form-control", id: "temperature" %>
+        <div class="input-group-text">℃</div>
+      </div>
+    </div>
+    <div class="col-2">
+      <%= f.label :注湯量, for: "pouring_amount", class: "form-label fw-bold fs-6" %>
+      <div class="input-group">
+        <%= f.text_field :total_pouring_amount, autofocus: true, autocomplete: "total_pouring_amount", class: "form-control", for: "pouring_amount" %>
+        <div class="input-group-text">ml</div>
+      </div>
+    </div>
+    <div class="col-2">
+      <%= f.label :抽出量, for: "extraction_amount", class: "form-label fw-bold fs-6" %>
+      <div class="input-group">
+        <%= f.text_field :extraction_amount, autofocus: true, autocomplete: "extraction_amount", class: "form-control", id: "extraction_amount" %>
+        <div class="input-group-text">ml</div>
+      </div>
+    </div>
+    <div class="col-2">
+      <%= f.label :抽出時間, for: "extraction_time", class: "form-label fw-bold fs-6" %>
+      <%= f.text_field :total_extraction_time, autofocus: true, autocomplete: "total_extraction_time", class: "form-control", id: "extraction_time" %>
+    </div>
+    <div class="col-4"></div>
+
+    <div class="col-4">
+      <%= f.label :使用ドリッパー, for: "dripper", class: "form-label fw-bold fs-6" %>
+      <%= f.text_field :dripper, autofocus: true, autocomplete: "dripper", class: "form-control", id: "dripper" %>
+    </div>
+    <div class="col-4">
+      <%= f.label :使用ペーパー, for: "paper", class: "form-label fw-bold fs-6" %>
+      <%= f.text_field :paper, autofocus: true, autocomplete: "paper", class: "form-control", id: "paper" %>
+    </div>
+
+    <hr>
+
+    <div class="col-10">
+      <%= f.label :抽出のポイント・コツなど, for: "point", class: "form-label fw-bold mb-4 fs-5" %>
+      <%= f.text_area :point, autofocus: true, autocomplete: "point", class: "form-control", id: "point", rows: "5" %>
+    </div>
+    <div class="col-2"></div>
+
+    <hr>
+
+    <div class="col-5">
+      <%= f.label :レシピの公開・非公開, class: "form-label fw-bold mb-4 fs-5" %>
+      <div class="form-check ms-5">
+        <label class="fw-bold text-muted me-4"><%= f.radio_button :status, true, style:"transform:scale(1.5)" %><span class="fs-5 ms-2">公開</span></label>
+        <label class="fw-bold text-muted"><%= f.radio_button :status, false, style:"transform:scale(1.5)", checked: true%><span class="fs-5 ms-2">非公開</span></label>
+      </div>
+    </div>
+    <div class="col-7 mb-5"></div>
+
+    <div class="col-10 text-center my-5">
+        <%= f.submit "新規登録", class: "btn btn-success btn-block px-5 me-4 fw-bold" %>
+    </div>
+  <% end %>
+
+</div>
+  <!--===== form end =====-->
+    </main>
   </div>
 </div>
 

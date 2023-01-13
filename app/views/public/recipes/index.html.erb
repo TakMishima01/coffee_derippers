@@ -1,0 +1,56 @@
+<div class="row">
+  <!--===== sidebar start =====-->
+  <%= render'layouts/sidebar' %>
+  <!--===== sidebar end =====-->
+  <div class="col-10 ps-0">
+  <!--===== topbar start =====-->
+    <%= render'layouts/header' %>
+  <!--===== topbar end =====-->
+    <main class="bg-light">
+  <!--===== main start =====-->
+      <div class="container">
+    <!--===== title start =====-->
+        <div class="row py-4">
+          <h1 class="px-4 mb-0 mt-3">レシピ一覧</h1>
+        </div>
+    <!--===== title end =====-->
+        <hr>
+    <!--===== recipe_index start =====-->
+<div class="row row-cols-1 row-cols-md-4 g-3">
+  <% @recipe.each do |recipe| %>
+  <div class="col">
+    <div class="card mx-auto mt-4 shadow">
+      <%= link_to recipe_path(recipe.id) do %>
+        <%= image_tag recipe.get_image(300,300), class:"card-img-top"; %>
+      <% end %>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-2">
+            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+          </div>
+          <div class="col-10">
+            <p class="card-title">
+              <%= link_to(recipe_path(recipe.id), class:"text-dark") do %>
+                <strong><i class="fa-solid fa-mug-hot"></i><span> <%= recipe.name %></span></strong>
+              <% end %>
+            </p>
+            <p class="card-text">説明：<%= recipe.point.truncate(21) %></p>
+            <span><i class="fas fa-user"></i> By <%= recipe.user.name %> ｜ </span>
+            <!--<span>%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class:"text-dark" %></span>-->
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>
+  <% end %>
+</div>
+    <!--===== recipe_index end =====-->
+      </div>
+            <div class ="mx-auto mt-4" style="width: 300px;">
+        <%= paginate @recipe %>
+      </div>
+  <!--===== main end =====-->
+    </main>
+  </div>
+</div>
+
