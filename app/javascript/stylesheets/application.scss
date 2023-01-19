@@ -40,6 +40,19 @@
     height: 24px;
 }
 
-  // .w-20 {
-  //     width: 20%;
-  // }
+  .user-header {
+      position: relative;
+  }
+
+  .user-img {
+    top: -24px;
+    border-radius: 50%;
+    border: 1px solid #ebe6d0;
+    padding: 4px;
+    position: absolute;
+    background: #ffffff;
+  }
+
+.user-header-name {
+  margin-left: 110px;
+}

@@ -17,6 +17,11 @@ root to: "public/homes#top"
 
 scope module: :public do
   resources :recipes
+
+  get "/users/:id/recipes" => "users#show", as: 'user_recipes'
+  get "/users/:id/share_recipes" => "users#share_recipes", as: 'user_share_recipes'
+
+  resources :users, only: [:edit, :update]
 end
 
 namespace :admin do
