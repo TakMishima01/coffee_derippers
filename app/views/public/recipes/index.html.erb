@@ -16,17 +16,17 @@
     <!--===== title end =====-->
         <hr>
     <!--===== recipe_index start =====-->
-<div class="row row-cols-1 row-cols-md-4 g-3">
+<div class="row row-cols-1 row-cols-md-4 g-3 mb-5">
   <% @recipe.each do |recipe| %>
   <div class="col">
-    <div class="card mx-auto mt-4 shadow">
+    <div class="card mx-auto mt-4 shadow h-100">
       <%= link_to recipe_path(recipe.id) do %>
         <%= image_tag recipe.get_image(300,300), class:"card-img-top"; %>
       <% end %>
       <div class="card-body">
         <div class="row">
           <div class="col-2">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            <%= image_tag recipe.user.image, width: "32", height: "32", class: "rounded-circle" %>
           </div>
           <div class="col-10">
             <p class="card-title">
@@ -35,7 +35,7 @@
               <% end %>
             </p>
             <p class="card-text">説明：<%= recipe.point.truncate(21) %></p>
-            <span><i class="fas fa-user"></i> By <%= recipe.user.name %> ｜ </span>
+            <span><i class="fas fa-user"></i> By <%= link_to recipe.user.name, user_recipes_path(recipe.user.id) %> ｜ </span>
             <!--<span>%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class:"text-dark" %></span>-->
           </div>
         </div>
@@ -45,9 +45,10 @@
   <% end %>
 </div>
     <!--===== recipe_index end =====-->
+
+      <div class ="mx-auto mt-4" style="width: 300px;">
+        <%= paginate @recipe, theme: 'bootstrap-5' %>
       </div>
-            <div class ="mx-auto mt-4" style="width: 300px;">
-        <%= paginate @recipe %>
       </div>
   <!--===== main end =====-->
     </main>

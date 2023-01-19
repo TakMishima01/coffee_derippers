@@ -11,7 +11,7 @@
 <div class="card mb-3">
   <%= image_tag 'user_top.jpg', class: "top_img bd-placeholder-img bd-placeholder-img-lg", height:"200px";%>
   <div class="card-body user-header">
-    <%= image_tag @user.image, width: "100", height: "100", class: "rounded-circle user-img" %>
+    <%= image_tag @user.get_user_image(90,90), class: "rounded-circle user-img" %>
     <h2 class="card-title user-header-name">@<%= @user.name %></h2>
   </div>
 </div>
