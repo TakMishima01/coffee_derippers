@@ -8,7 +8,7 @@
   <!--===== topbar end =====-->
     <main class="bg-light">
   <!--===== main start =====-->
-      <div class="container">
+      <div class="container-fluid">
     <!--===== title start =====-->
         <div class="row py-4">
           <h1 class="px-4 mb-0 mt-3">レシピ一覧</h1>
@@ -18,7 +18,7 @@
     <!--===== recipe_index start =====-->
 <div class="row row-cols-1 row-cols-md-4 g-3 mb-5">
   <% @recipe.each do |recipe| %>
-  <div class="col">
+  <div class="col pe-0">
     <div class="card mx-auto mt-4 shadow h-100">
       <%= link_to recipe_path(recipe.id) do %>
         <%= image_tag recipe.get_image(300,300), class:"card-img-top"; %>
@@ -34,9 +34,13 @@
                 <strong><i class="fa-solid fa-mug-hot"></i><span> <%= recipe.name %></span></strong>
               <% end %>
             </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
             <p class="card-text">説明：<%= recipe.point.truncate(21) %></p>
             <span><i class="fas fa-user"></i> By <%= link_to recipe.user.name, user_recipes_path(recipe.user.id) %> ｜ </span>
-            <!--<span>%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class:"text-dark" %></span>-->
+            <span><%= link_to "#{recipe.recipe_comments.count} コメント", recipe_path(recipe.id), class:"text-dark" %></span>
           </div>
         </div>
       </div>

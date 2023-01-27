@@ -15,8 +15,14 @@ devise_for :users,skip: [:passwords], controllers: {
 
 root to: "public/homes#top"
 
+devise_scope :user do
+  post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+end
+
 scope module: :public do
-  resources :recipes
+  resources :recipes do
+    resources :recipe_comments, only: [:create, :destroy]
+  end
 
   get "/users/:id/recipes" => "users#show", as: 'user_recipes'
   get "/users/:id/share_recipes" => "users#share_recipes", as: 'user_share_recipes'
