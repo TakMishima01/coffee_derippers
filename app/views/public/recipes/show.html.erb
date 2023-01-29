@@ -11,7 +11,14 @@
       <div class="container">
     <!--===== title start =====-->
         <div class="row py-4">
-          <h1 class="px-4 mb-0 mt-3"><%= @recipe.name %></h1>
+          <div class="col-6">
+            <h1 class="px-4 mb-0 mt-3"><%= @recipe.name %></h1>
+          </div>
+          <div class="col-6">
+            <% if @recipe.user.id == current_user.id %>
+              <%= link_to "編集する", edit_recipe_path(@recipe), class: "btn btn-success btn-lg mb-0 mt-3 px-4" %>
+            <% end %>
+          </div>
         </div>
     <!--===== title end =====-->
         <hr>
@@ -19,7 +26,7 @@
         <div class="row">
           <div class="recipe_flex">
       <!--===== image start =====-->
-            <div class="col-5">
+            <div class="col-6">
               <%= image_tag @recipe.get_image(450,450) %>
             </div>
       <!--===== image end =====-->
@@ -78,14 +85,14 @@
                 </tbody>
               </table>
             </div>
-            <div class="col-2"></div>
+            <div class="col-1"></div>
       <!--===== info end =====-->
           </div>
         </div>
     <!--===== recipe_detail end =====-->
     <!--===== extraction_detail start =====-->
         <div class="row">
-          <div class="col-10">
+          <div class="col-11">
             <table class="table table-hover table-bordered bg-white shadow-sm">
             <thead class="table-dark bg-secondary">
               <tr>
@@ -168,37 +175,59 @@
             </tbody>
           </table>
           </div>
-          <div class="col-2"></div>
+          <div class="col-1"></div>
         </div>
     <!--===== extraction_detail end =====-->
     <!--===== point start =====-->
         <div class="row">
-          <div class="col-10">
+          <div class="col-11">
             <div class="point_box">
               <span class="fw-bold">抽出のポイント・コツなど</span>
               <p class="mt-2"><%=safe_join(@recipe.point.split("\n"),tag(:br))%></p>
             </div>
           </div>
-          <div class="col-2"></div>
+          <div class="col-1"></div>
         </div>
     <!--===== point end =====-->
     <!--===== comments start =====-->
         <div class="row">
           <hr>
-          <h5 class="fw-bold">コメント</h5>
-          <div class="col-10">
-          <div class="comment_item">
-
-            <div class="comment_item_info no-wrap">
-              <p>user_name</p>
-              <p>2022年12月20日</p>
+          <h5 class="fw-bold">コメント（<%= @recipe.recipe_comments.count %>）</h5>
+          <div class="col-11">
+            <% @recipe.recipe_comments.each do |recipe_comment| %>
+            <div class="comment_item">
+              <div class="comment_item_info no-wrap">
+                <p class="mx-1"><%= image_tag recipe_comment.user.get_user_image(25,25), class: "rounded-circle" %></p>
+                <p><%= recipe_comment.user.name %>&ensp;</p>
+                <p><%= recipe_comment.created_at.strftime("%Y年%m月%d日 %H:%M") %></p>
+                <p class="ms-5">
+                  <% if recipe_comment.user == current_user %>
+                    <%= link_to "削除", recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete, class: "btn btn-danger btn-sm py-0 mt-0" %>
+                  <% end %>
+                </p>
+              </div>
+              <div class="comment_item_text">
+                <p><%= recipe_comment.comment %></p>
+              </div>
             </div>
-            <div class="comment_item_text">
-              <p>淹れ方に困っていたので助かりました！参考にします。</p>
-            </div>
-</div>
+            <% end %>
           </div>
         </div>
+
+
+        <div class="row">
+          <hr>
+          <h5 class="fw-bold">コメントを書く</h5>
+          <div class="col-11 my-3">
+              <%= form_with model: [@recipe, @recipe_comment] do |f| %>
+                <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "form-control" %>
+                <div class="my-3 text-center">
+                  <%= f.submit "送信する" , class: "btn btn-success px-5"%>
+                </div>
+              <% end %>
+          </div>
+        </div>
+
     <!--===== comments end =====-->
       </div>
   <!--===== main end =====-->
