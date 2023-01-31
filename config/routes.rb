@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'relationships/followings'
+    get 'relationships/followers'
+  end
   # 管理者用
 # URL /admin/sign_in ...
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -29,7 +33,11 @@ scope module: :public do
   get "/users/:id/share_recipes" => "users#share_recipes", as: 'user_share_recipes'
   get "/users/:id/my_recipes" => "users#my_recipes", as: 'user_my_recipes'
 
-  resources :users, only: [:edit, :update]
+  resources :users, only: [:edit, :update] do
+    resource :relationships, only: [:create, :destroy]
+    get "followings" => "relationships#followings", as: "followings"
+    get "followers" => "relationships#followers" , as: "followers"
+  end
 end
 
 namespace :admin do
