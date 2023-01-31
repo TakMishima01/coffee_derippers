@@ -20,7 +20,7 @@
   <div class="px-5">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <%= link_to "レシピ", user_recipes_path, class: "nav-link active" %>
+          <%= link_to "レシピ", user_recipes_path, class: "nav-link border text-muted" %>
           <!--<a href="" id="tab1" class="nav-link active" role="tab" data-bs-toggle="tab" aria-selected="true"> レシピ </a>-->
         </li>
         <li class="nav-item" role="presentation">
@@ -28,7 +28,7 @@
           <!--<a href="#photo2" id="tab2" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="false"> 公開レシピ </a>-->
         </li>
         <li class="nav-item" role="presentation">
-          <%= link_to "マイレシピ", user_my_recipes_path, class: "nav-link border text-muted" %>
+          <%= link_to "マイレシピ", user_my_recipes_path, class: "nav-link active" %>
           <!--<a href="#photo2" id="tab2" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="false"> 公開レシピ </a>-->
         </li>
         <li class="nav-item" role="presentation">
@@ -52,13 +52,13 @@
             <div class="card m-auto" style="max-width: 400px;">
               <div class="row g-0">
                 <div class="col-md-5">
-                  <%= image_tag recipe.get_image(170,170) %>
+                  <%= image_tag recipe.recipe.get_image(170,170) %>
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title"><%= recipe.name %></h5>
-                    <p class="card-text"><%= recipe.point.truncate(21) %></p>
-                    <p class="card-text"><small class="text-muted">作成日：<%= recipe.created_at.strftime('%Y/%m/%d') %></small></p>
+                    <h5 class="card-title"><%= recipe.recipe.name %></h5>
+                    <p class="card-text"><%= recipe.recipe.point.truncate(21) %></p>
+                    <p class="card-text"><small class="text-muted">作成日：<%= recipe.recipe.created_at.strftime('%Y/%m/%d') %></small></p>
                   </div>
                 </div>
               </div>

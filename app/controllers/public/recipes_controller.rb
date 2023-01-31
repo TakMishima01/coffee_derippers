@@ -39,6 +39,8 @@ class Public::RecipesController < ApplicationController
 
   def destroy
   end
+  
+
 
   private
 

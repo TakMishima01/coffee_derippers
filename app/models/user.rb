@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :recipes
   has_one_attached :image
   has_many :recipe_comments, dependent: :destroy
+  has_many :my_recipes, dependent: :destroy
 
   def get_user_image(width, height)
     unless image.attached?
@@ -22,4 +23,7 @@ class User < ApplicationRecord
       user.name = "guest_user"
     end
   end
+
+
+
 end

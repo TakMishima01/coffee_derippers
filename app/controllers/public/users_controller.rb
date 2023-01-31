@@ -14,6 +14,12 @@ class Public::UsersController < ApplicationController
     @recipes = @user.recipes.page(params[:page]).per(8)
   end
 
+  def my_recipes
+    is_matching_login_user
+    @user = User.find(params[:id])
+    @recipes = @user.my_recipes.page(params[:page]).per(8)
+  end
+
   def edit
     is_matching_login_user
     @user = current_user
