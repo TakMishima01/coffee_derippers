@@ -35,7 +35,18 @@
               <%= link_to "#", class: "text-reset me-4" do %>
                 <%= @recipe.user.name %>
               <% end %>
-              <button type="button" class="btn btn-info text-white btn-sm ms-4 mb-2">+レシピを保存</button>
+
+              <% if @recipe.add_my_recipe_by?(current_user) %>
+                <%= link_to recipe_my_recipes_path(@recipe), method: :delete do %>
+                  <button type="button" class="btn btn-outline-info btn-sm ms-4 mb-2">-マイレシピから削除</button>
+                <% end %>
+              <% else %>
+                <%= link_to recipe_my_recipes_path(@recipe), method: :post do %>
+                  <button type="button" class="btn btn-info text-white btn-sm ms-4 mb-2">+マイレシピに保存</button>
+                <% end %>
+              <% end %>
+
+
               <table class="col-6 table table-bordered bg-white shadow-sm">
                 <tbody>
                   <tr>

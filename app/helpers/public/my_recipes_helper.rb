@@ -1,0 +1,2 @@
+module Public::MyRecipesHelper
+end
