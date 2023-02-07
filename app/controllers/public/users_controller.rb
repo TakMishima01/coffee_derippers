@@ -6,33 +6,39 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @recipes = @user.recipes.page(params[:page]).per(8)
+    @production_areas = ProductionArea.all
   end
 
   def share_recipes
     is_matching_login_user
     @user = User.find(params[:id])
     @recipes = @user.recipes.where(status: true).page(params[:page]).per(8)
+    @production_areas = ProductionArea.all
   end
 
   def my_recipes
     is_matching_login_user
     @user = User.find(params[:id])
     @recipes = @user.my_recipes.page(params[:page]).per(8)
+    @production_areas = ProductionArea.all
   end
 
   def followings
     @user = User.find(params[:id])
     @users = @user.followings
+    @production_areas = ProductionArea.all
   end
 
   def followers
     @user = User.find(params[:id])
     @users = @user.followers
+    @production_areas = ProductionArea.all
   end
 
   def edit
     is_matching_login_user
     @user = current_user
+    @production_areas = ProductionArea.all
   end
 
   def update

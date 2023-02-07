@@ -1,15 +1,18 @@
 class Public::RecipesController < ApplicationController
   def index
     @recipe = Recipe.where(status: 1).page(params[:page]).per(8)
+    @production_areas = ProductionArea.all
   end
 
   def show
     @recipe = Recipe.find(params[:id])
     @recipe_comment = RecipeComment.new
+    @production_areas = ProductionArea.all
   end
 
   def new
     @recipe = Recipe.new
+    @production_areas = ProductionArea.all
   end
 
   def create
@@ -25,6 +28,7 @@ class Public::RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
+    @production_areas = ProductionArea.all
   end
 
   def update
@@ -39,7 +43,7 @@ class Public::RecipesController < ApplicationController
 
   def destroy
   end
-  
+
 
 
   private

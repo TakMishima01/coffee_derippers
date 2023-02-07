@@ -24,9 +24,9 @@
         </a>
         <div class="collapse" id="production_area">
           <ul class="nav nav-small flex-column">
-            <li class="nav-item"><a href="#" class="nav-link link-dark">エチオピア</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-dark">ブラジル</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-dark">インドネシア</a></li>
+            <% @production_areas.each do |production_area| %>
+              <li class="nav-item"><a href="#" class="nav-link link-dark"><%= production_area.name %></a></li>
+            <% end %>
           </ul>
         </div>
       </li>
