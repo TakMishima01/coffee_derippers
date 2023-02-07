@@ -1,0 +1,25 @@
+<div class="tab-content border">
+  <div id="recipe_index" class="container" role="tabpanel" aria-labelledby="tab1">
+    <div class="row row-cols-1 row-cols-md-2 g-4 py-4 mx-auto">
+      <% @users.each do |user| %>
+        <%= link_to user_recipes_path(user) do %>
+          <div class="card m-auto" style="max-width: 400px;">
+            <div class="row g-0">
+              <div class="col-md-5">
+                <%= image_tag user.get_user_image(65,65), class: "rounded-circle" %>
+              </div>
+              <div class="col-md-7">
+                <div class="card-body">
+                  <h5 class="card-title">@<%= user.name %></h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end%>
+      <% end %>
+    </div>
+  </div>
+  <div class ="mx-auto mt-4" style="width: 300px;">
+    <!--%= paginate @recipes, theme: 'bootstrap-5' %>-->
+  </div>
+</div>

@@ -32,11 +32,13 @@ scope module: :public do
   get "/users/:id/recipes" => "users#show", as: 'user_recipes'
   get "/users/:id/share_recipes" => "users#share_recipes", as: 'user_share_recipes'
   get "/users/:id/my_recipes" => "users#my_recipes", as: 'user_my_recipes'
+  get "/users/:id/followings" => "users#followings", as: 'user_followings'
+  get "/users/:id/followers" => "users#followers", as: 'user_followers'
 
   resources :users, only: [:edit, :update] do
     resource :relationships, only: [:create, :destroy]
-    get "followings" => "relationships#followings", as: "followings"
-    get "followers" => "relationships#followers" , as: "followers"
+    # get "followings" => "relationships#followings", as: "followings"
+    # get "followers" => "relationships#followers" , as: "followers"
   end
 end
 

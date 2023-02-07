@@ -11,13 +11,23 @@ class Public::UsersController < ApplicationController
   def share_recipes
     is_matching_login_user
     @user = User.find(params[:id])
-    @recipes = @user.recipes.page(params[:page]).per(8)
+    @recipes = @user.recipes.where(status: true).page(params[:page]).per(8)
   end
 
   def my_recipes
     is_matching_login_user
     @user = User.find(params[:id])
     @recipes = @user.my_recipes.page(params[:page]).per(8)
+  end
+
+  def followings
+    @user = User.find(params[:id])
+    @users = @user.followings
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @users = @user.followers
   end
 
   def edit
