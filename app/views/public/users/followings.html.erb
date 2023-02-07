@@ -25,7 +25,7 @@
           <!--<a href="" id="tab1" class="nav-link active" role="tab" data-bs-toggle="tab" aria-selected="true"> レシピ </a>-->
         </li>
         <li class="nav-item" role="presentation">
-          <%= link_to "公開レシピ", user_share_recipes_path, class: "nav-link active" %>
+          <%= link_to "公開レシピ", user_share_recipes_path, class: "nav-link border text-muted" %>
           <!--<a href="#photo2" id="tab2" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="false"> 公開レシピ </a>-->
         </li>
         <li class="nav-item" role="presentation">
@@ -33,7 +33,7 @@
           <!--<a href="#photo2" id="tab2" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="false"> 公開レシピ </a>-->
         </li>
         <li class="nav-item" role="presentation">
-          <%= link_to "フォロー", user_followings_path, class: "nav-link border text-muted" %>
+          <%= link_to "フォロー", user_followings_path, class: "nav-link active" %>
           <!--<a href="#photo3" id="tab3" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="false"> フォロー </a>-->
         </li>
         <li class="nav-item" role="presentation">
@@ -41,7 +41,7 @@
           <!--<a href="#photo4" id="tab4" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="false"> フォロワー </a>-->
         </li>
       </ul>
-      <%= render'layouts/recipe_list' %>
+      <%= render'layouts/follow_list' %>
     </div>
   <!--===== tab end =====-->
   </main>
