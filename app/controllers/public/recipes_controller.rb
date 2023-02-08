@@ -1,7 +1,20 @@
 class Public::RecipesController < ApplicationController
   def index
-    @recipe = Recipe.where(status: 1).page(params[:page]).per(8)
     @production_areas = ProductionArea.all
+    if params[:q].blank? && params[:production_area_id].blank?
+      @title = "レシピ"
+      @recipes_count = @search_recipes.count
+      @recipes = @search_view
+    elsif params[:q].present? && params[:production_area_id].blank?
+      @title = "検索結果"
+      @recipes_count = @search_recipes.count
+      @recipes = @search_view
+    else params[:q].blank? && params[:production_area_id].present?
+      @production_area = ProductionArea.find(params[:production_area_id])
+      @title = @production_area.name
+      @recipes_count = @production_area.recipes.where(status: 1).count
+      @recipes = @production_area.recipes.where(status: 1).page(params[:page]).per(8)
+    end
   end
 
   def show

@@ -11,10 +11,13 @@
     <hr>
   <!--===== nav_list start =====-->
     <span class="border rounded-pill border-4 ms-0 me-auto p-1 mb-1">レシピを探す</span>
-    <form class="d-flex pe-1">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-    </form>
+
+    <%= search_form_for @search, url: recipes_path, class: "d-flex pe-1" do |f| %>
+        <%= f.text_field :name_cont , class: "form-control me-2",placeholder: 'Search' %>
+          <%= button_tag type: "submit", class: "btn btn-outline-success" do %>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          <% end %>
+    <% end %>
 
     <ul class="list-unstyled ps-0 d-lg-block navbar-nav">
 
@@ -25,14 +28,17 @@
         <div class="collapse" id="production_area">
           <ul class="nav nav-small flex-column">
             <% @production_areas.each do |production_area| %>
-              <li class="nav-item"><a href="#" class="nav-link link-dark"><%= production_area.name %></a></li>
+              <li class="nav-item">
+                <%= link_to production_area.name, recipes_path(production_area_id: production_area.id), class: "nav-link link-dark" %>
+              </li>
             <% end %>
           </ul>
         </div>
       </li>
 
       <li class="nav-item mb-1">
-        <a class="nav-link" href="#">マイレシピ</a>
+        <%= link_to "マイレシピ", user_my_recipes_path(current_user), class:"nav-link" %>
+        <!--<a class="nav-link" href="#">マイレシピ</a>-->
       </li>
 
       <li class="nav-item mb-1">
