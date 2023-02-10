@@ -48,6 +48,7 @@ namespace :admin do
   resources :recipes, only: [:index, :show, :destroy] do
     resources :recipe_comments, only: [:destroy]
   end
+  resources :production_areas, only: [:index, :create, :edit, :update]
 end
 
 

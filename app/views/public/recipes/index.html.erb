@@ -11,13 +11,13 @@
       <div class="container-fluid">
     <!--===== title start =====-->
         <div class="row py-4">
-          <h1 class="px-4 mb-0 mt-3">レシピ一覧</h1>
+          <h1 class="px-4 mb-0 mt-3"><%= @title + "一覧" %><small>（全 <%= @recipes_count %> 件）</small></h1>
         </div>
     <!--===== title end =====-->
         <hr>
     <!--===== recipe_index start =====-->
 <div class="row row-cols-1 row-cols-md-4 g-3 mb-5">
-  <% @recipe.each do |recipe| %>
+  <% @recipes.each do |recipe| %>
   <div class="col pe-0">
     <div class="card mx-auto mt-4 shadow h-100">
       <%= link_to recipe_path(recipe.id) do %>
@@ -51,7 +51,7 @@
     <!--===== recipe_index end =====-->
 
       <div class ="mx-auto mt-4" style="width: 300px;">
-        <%= paginate @recipe, theme: 'bootstrap-5' %>
+        <%= paginate @recipes, theme: 'bootstrap-5' %>
       </div>
       </div>
   <!--===== main end =====-->
