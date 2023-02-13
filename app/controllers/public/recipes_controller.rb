@@ -45,12 +45,12 @@ class Public::RecipesController < ApplicationController
   def edit
     @recipe = Recipe.find(params[:id])
     @production_areas = ProductionArea.all
-    @pouring_details = @recipe.pouring_details
+    # @pouring_details = @recipe.pouring_details
   end
 
   def update
     @recipe = Recipe.find(params[:id])
-    @pouring_details = @recipe.pouring_details.where(params[:recipe_id])
+    # @pouring_details = @recipe.pouring_details
     if @recipe.update(recipe_params)
       redirect_to recipe_path(@recipe.id), notice: "変更が完了しました"
     else
@@ -69,7 +69,7 @@ class Public::RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:user_id, :production_area_id, :name, :coffee_beans_name, :roast, :amount, :grind, :temperature,
                                     :total_pouring_amount, :extraction_amount, :total_extraction_time, :dripper, :paper, :point, :status, :image,
-                                    pouring_details_attributes: [:recipe_id, :start_at, :amount, :note, :_destroy])
+                                    pouring_details_attributes: [:id, :recipe_id, :start_at, :amount, :note, :_destroy])
   end
 
 end

@@ -7,7 +7,7 @@ class Recipe < ApplicationRecord
   belongs_to :production_area
 
   has_many :pouring_details, dependent: :destroy
-  accepts_nested_attributes_for :pouring_details, allow_destroy: true
+  accepts_nested_attributes_for :pouring_details, reject_if: :all_blank, allow_destroy: true
 
   enum roast: { light_roast: 0, medium_roast: 1, medium_dark_roast: 2 }
   enum grind: { turkish: 0, fine: 1, medium_fine: 2, medium: 3, coarse: 4 }
