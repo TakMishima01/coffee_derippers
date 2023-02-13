@@ -100,12 +100,27 @@
     <div class="col-2"></div>
 
     <hr>
+    <div class="row g-3 mb-4">
+      <h5 class="fw-bold pe-0 col-auto my-auto">抽出方法</h5>
+      <!--<button class="btn btn-secondary btn-sm my-auto col-auto ms-3">+リアルタイム記録</button>-->
+    </div>
+
+    <%= f.fields_for :pouring_details, local: true do |pouring_detail| %>
+      <%= render 'pouring_detail_fields', f: pouring_detail %>
+    <% end %>
+    <div class="links">
+        <%= link_to_add_association '注湯情報を追加', f, :pouring_details %>
+    </div>
+
+
+
+    <hr>
 
     <div class="col-5">
       <%= f.label :レシピの公開・非公開, class: "form-label fw-bold mb-4 fs-5" %>
       <div class="form-check ms-5">
         <label class="fw-bold text-muted me-4"><%= f.radio_button :status, true, style:"transform:scale(1.5)" %><span class="fs-5 ms-2">公開</span></label>
-        <label class="fw-bold text-muted"><%= f.radio_button :status, false, style:"transform:scale(1.5)", checked: true%><span class="fs-5 ms-2">非公開</span></label>
+        <label class="fw-bold text-muted"><%= f.radio_button :status, false, style:"transform:scale(1.5)"%><span class="fs-5 ms-2">非公開</span></label>
       </div>
     </div>
     <div class="col-7 mb-5"></div>

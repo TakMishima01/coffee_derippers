@@ -15,7 +15,7 @@
         </div>
     <!--===== title end =====-->
         <hr>
-   <%= form_with model: @recipe, url: recipes_path, class:"row g-4" do |f| %>
+   <%= form_with model: @recipe, url: recipes_path, class:"row g-4", local: true do |f| %>
 
     <div class="col-4">
       <%= f.label :レシピトップ画像, for:"recipe_image" ,class: "form-label fw-bold fs-6" %>
@@ -89,6 +89,22 @@
       <%= f.label :使用ペーパー, for: "paper", class: "form-label fw-bold fs-6" %>
       <%= f.text_field :paper, autofocus: true, autocomplete: "paper", class: "form-control", id: "paper" %>
     </div>
+
+    <hr>
+    <div class="row g-3 mb-4">
+      <h5 class="fw-bold pe-0 col-auto my-auto">抽出方法</h5>
+      <button class="btn btn-secondary btn-sm my-auto col-auto ms-3">+リアルタイム記録</button>
+    </div>
+
+    <%= f.fields_for :pouring_details, local: true do |pouring_detail| %>
+      <%= render 'pouring_detail_fields', f: pouring_detail %>
+    <% end %>
+    <div class="links">
+        <%= link_to_add_association '注湯情報を追加', f, :pouring_details %>
+    </div>
+
+
+
 
     <hr>
 

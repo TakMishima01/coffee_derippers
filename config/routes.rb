@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'relationships/followings'
-    get 'relationships/followers'
-  end
+
   # 管理者用
 # URL /admin/sign_in ...
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -16,6 +13,11 @@ devise_for :users,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+
+namespace :public do
+  get 'relationships/followings'
+  get 'relationships/followers'
+end
 
 root to: "public/homes#top"
 

@@ -104,87 +104,32 @@
     <!--===== extraction_detail start =====-->
         <div class="row">
           <div class="col-11">
-            <table class="table table-hover table-bordered bg-white shadow-sm">
-            <thead class="table-dark bg-secondary">
-              <tr>
-                <th scope="col">時間</th>
-                <th scope="col">注湯量（累計）</th>
-                <th scope="col">水流量（秒速）</th>
-                <th scope="col">備考</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="align-middle">
-                  0秒
-                </td>
-                <td class="align-middle">
-                  40ml(40ml)
-                </td>
-                <td class="align-middle">
-                  4ml/s
-                </td>
-                <td class="align-middle">
-                  縁までかける、スピンを行う
-                </td>
-              </tr>
-              <tr>
-                <td class="align-middle">
-                  0秒
-                </td>
-                <td class="align-middle">
-                  40ml(40ml)
-                </td>
-                <td class="align-middle">
-                  4ml/s
-                </td>
-                <td class="align-middle">
-                  縁までかける、スピンを行う
-                </td>
-              </tr>
-              <tr>
-                <td class="align-middle">
-                  45秒
-                </td>
-                <td class="align-middle">
-                  80ml(120ml)
-                </td>
-                <td class="align-middle">
-                  5ml/s
-                </td>
-                <td class="align-middle">
-                </td>
-              </tr>
-              <tr>
-                <td class="align-middle">
-                  1分30秒
-                </td>
-                <td class="align-middle">
-                  90ml(210ml)
-                </td>
-                <td class="align-middle">
-                  8ml/s
-                </td>
-                <td class="align-middle">
 
-                </td>
-              </tr>
-              <tr>
-                <td class="align-middle">
-                  3分30秒
-                </td>
-                <td class="align-middle">
-                  終了
-                </td>
-                <td class="align-middle">
+              <table class="table table-hover table-bordered bg-white shadow-sm">
+                <thead class="table-dark bg-secondary">
+                  <tr>
+                    <th scope="col" style="width: 20%">時間</th>
+                    <th scope="col" style="width: 20%">注湯量（累計）</th>
+                    <th scope="col" style="width: 60%">備考</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @pouring_details.each do |pouring_detail| %>
+                  <tr>
+                    <td class="align-middle">
+                      <%= pouring_detail.start_at %>秒
+                    </td>
+                    <td class="align-middle">
+                      <%= pouring_detail.amount %>ml
+                    </td>
+                    <td class="align-middle">
+                      <%= pouring_detail.note %>
+                    </td>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
 
-                </td>
-                <td class="align-middle">
-                  落ちきるまで
-                </td>
-              </tr>
-            </tbody>
-          </table>
           </div>
           <div class="col-1"></div>
         </div>
