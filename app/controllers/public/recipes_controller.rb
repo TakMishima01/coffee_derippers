@@ -21,11 +21,14 @@ class Public::RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @recipe_comment = RecipeComment.new
     @production_areas = ProductionArea.all
+    @pouring_details = PouringDetail.where(params[:recipe_id])
   end
 
   def new
     @recipe = Recipe.new
     @production_areas = ProductionArea.all
+    @recipe.pouring_details.build
+    @count = 1
   end
 
   def create
@@ -62,8 +65,9 @@ class Public::RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:user_id, :production_area_id, :name, :coffee_beans_name, :roast, :amount,
-    :grind, :temperature, :total_pouring_amount, :extraction_amount, :total_extraction_time, :dripper, :paper, :point, :status, :image)
+    params.require(:recipe).permit(:user_id, :production_area_id, :name, :coffee_beans_name, :roast, :amount, :grind, :temperature,
+                                    :total_pouring_amount, :extraction_amount, :total_extraction_time, :dripper, :paper, :point, :status, :image,
+                                    pouring_details_attributes: [:recipe_id, :start_at, :amount, :note, :_destroy])
   end
 
 end

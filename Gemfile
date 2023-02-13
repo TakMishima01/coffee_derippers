@@ -59,3 +59,4 @@ gem 'kaminari'
 gem 'enum_help'
 gem 'bootstrap5-kaminari-views', '~> 0.0.1'
 gem 'ransack'
+gem "cocoon"

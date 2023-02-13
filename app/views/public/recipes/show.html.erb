@@ -185,6 +185,32 @@
               </tr>
             </tbody>
           </table>
+
+              <table class="table table-hover table-bordered bg-white shadow-sm">
+                <thead class="table-dark bg-secondary">
+                  <tr>
+                    <th scope="col" style="width: 20%">時間</th>
+                    <th scope="col" style="width: 20%">注湯量（累計）</th>
+                    <th scope="col" style="width: 60%">備考</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @pouring_details.each do |pouring_detail| %>
+                  <tr>
+                    <td class="align-middle">
+                      <%= pouring_detail.start_at %>秒
+                    </td>
+                    <td class="align-middle">
+                      <%= pouring_detail.amount %>ml
+                    </td>
+                    <td class="align-middle">
+                      <%= pouring_detail.note %>
+                    </td>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+
           </div>
           <div class="col-1"></div>
         </div>
