@@ -45,10 +45,12 @@ class Public::RecipesController < ApplicationController
   def edit
     @recipe = Recipe.find(params[:id])
     @production_areas = ProductionArea.all
+    @pouring_details = @recipe.pouring_details
   end
 
   def update
     @recipe = Recipe.find(params[:id])
+    @pouring_details = @recipe.pouring_details.where(params[:recipe_id])
     if @recipe.update(recipe_params)
       redirect_to recipe_path(@recipe.id), notice: "変更が完了しました"
     else
