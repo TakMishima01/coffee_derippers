@@ -46,7 +46,7 @@ end
 
 namespace :admin do
   root 'users#index'
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:show, :edit, :update]
   resources :recipes, only: [:index, :show, :destroy] do
     resources :recipe_comments, only: [:destroy]
   end

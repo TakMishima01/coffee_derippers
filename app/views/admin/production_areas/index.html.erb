@@ -1,19 +1,23 @@
-
 <div class="row">
-  <!--===== sidebar start =====-->
-    <%= render'layouts/admin_sidebar' %>
-  <!--===== sidebar end =====-->
-  <div class="col-10">
-  <!--===== topbar start =====-->
+<!--sidebar-->
+  <%= render'layouts/admin_sidebar' %>
+  <div class="col-10 ps-0">
+<!--header-->
     <%= render'layouts/admin_header' %>
-  <!--===== sidebar end =====-->
-  <!--===== main start =====-->
+<!--production_area_new-->
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-11 col-xl-10">
           <div class="page-header">
-            <h3 class="px-4">産地一覧・追加</h3>
+            <h3 class="px-4 mb-0 mt-3">産地一覧・追加</h3>
           </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row mt-4 mb-5">
+        <div class="col-5 ms-3">
 
           <%= form_with model: @production_area, url: admin_production_areas_path, class: "form-inline", local: true do |f| %>
             <div class="form-group my-3">
@@ -22,41 +26,40 @@
             </div>
             <%= f.submit '新規登録', class: "btn btn-success"%>
           <% end %>
-
-
-
-  <div class="row pt-3">
-    <div class="col-5">
-      <table class="table table-hover mb-5">
-        <thead class="thead-light">
-          <tr>
-            <th scope="col">
-              <div class="text-center">産地</div>
-            </th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <% @production_areas.each do |production_area| %>
-          <tbody>
-            <tr>
-              <td>
-                <%= production_area.name %>
-              </td>
-              <td>
-                <div class="text-right">
-                  <%= link_to '編集する', edit_admin_production_area_path(production_area), class: "btn btn-success" %>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        <% end %>
-      </table>
+        </div>
+      </div>
+      <div class="col-7"></div>
     </div>
-  </div>
-  </div>
+<!--production_areas_index-->
+    <div class="container">
+      <div class="row">
+        <div class="col-5 ms-3">
+          <table class="table table-hover mb-5">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">
+                  <div class="text-start ms-1">産地名</div>
+                </th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <% @production_areas.each do |production_area| %>
+              <tbody>
+                <tr>
+                  <td>
+                    <%= production_area.name %>
+                  </td>
+                  <td>
+                    <div class="text-right">
+                      <%= link_to '編集する', edit_admin_production_area_path(production_area), class: "btn btn-success" %>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            <% end %>
+          </table>
+        </div>
       </div>
     </div>
-  <!--===== main end =====-->
   </div>
 </div>
-
