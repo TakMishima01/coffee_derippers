@@ -21,7 +21,7 @@ class Public::RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @recipe_comment = RecipeComment.new
     @production_areas = ProductionArea.all
-    @pouring_details = PouringDetail.where(params[:recipe_id])
+    @pouring_details = PouringDetail.where(recipe_id: params[:id])
   end
 
   def new

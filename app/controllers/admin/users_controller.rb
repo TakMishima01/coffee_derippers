@@ -1,5 +1,7 @@
 class Admin::UsersController < ApplicationController
 
+    # before_action :is_matching_login_user, only: [:edit, :update, :index, :show]
+
   def index
     @users = User.page(params[:page]).per(10)
   end
