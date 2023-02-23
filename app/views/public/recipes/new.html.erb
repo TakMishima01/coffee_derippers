@@ -99,8 +99,8 @@
     <%= f.fields_for :pouring_details, local: true do |pouring_detail| %>
       <%= render 'pouring_detail_fields', f: pouring_detail %>
     <% end %>
-    <div class="links">
-        <%= link_to_add_association '注湯情報を追加', f, :pouring_details %>
+    <div class="links d-grid gap-2 col-6 mx-auto">
+        <%= link_to_add_association '注湯情報を追加', f, :pouring_details, class: "btn btn-primary" %>
     </div>
 
 

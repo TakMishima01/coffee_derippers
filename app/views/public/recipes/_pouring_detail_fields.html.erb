@@ -1,7 +1,8 @@
-<div class="nested-fields row">
+<div class="nested-fields row mb-2">
 
-  <div class="col-1 my-auto "><%= @count %>投目</div>
-  <% f.hidden_field :racipe_id, value: @recipe.id %>
+  <div class="col-1 my-auto field">
+  </div>
+  <% f.hidden_field :recipe_id, value: @recipe.id %>
 
   <div class="col-2 my-auto field">
     <div class="input-group">
@@ -24,7 +25,7 @@
   </div>
 
   <div class="col-1 my-auto field">
-    <%= link_to_remove_association "削除", f %>
+    <%= link_to_remove_association "削除", f, class: "btn btn-danger btn-sm" %>
   </div>
   <div class="col-1"></div>
 

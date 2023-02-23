@@ -1,39 +1,32 @@
-<header class="p-3 mb-0 border-bottom">
+<header class="p-3 mb-0 top-bar shadow-sm">
   <div class="container">
     <div class="d-flex flex-wrap align-items-end justify-content-end justify-content-lg-end">
-<!--===== dropdown_menu start =====-->
       <div class="dropdown text-end">
         <% if user_signed_in? %>
-  <!--===== user_img start =====-->
+<!--ログイン時-->
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= image_tag current_user.get_user_image(32,32), class: "rounded-circle" %>
-            <span class="text-dark">@<%= current_user.name %></span>
+            <%= image_tag current_user.get_user_image(32,32), class: "rounded-circle shadow" %>
+            <span class="font-color">@<%= current_user.name %></span>
           </a>
-  <!--===== user_img end =====-->
-  <!--===== sub_menu start =====-->
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
             <li><%= link_to "マイページ", user_recipes_path(current_user), class:"dropdown-item" %></li>
             <li><%= link_to "ユーザー情編集", edit_user_path(current_user), class:"dropdown-item" %></li>
             <li><hr class="dropdown-divider"></li>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"dropdown-item" %></li>
           </ul>
-  <!--===== sub_menu end =====-->
         <% else %>
-  <!--===== user_img start =====-->
+<!--未ログイン時-->
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
             <%= image_tag "no_image.jpg", width: 32, heght: 32, class: "rounded-circle" %>
-            <span class="text-dark">ログイン/新規登録はこちら</span>
+            <span class="font-color">ログイン/新規登録はこちら</span>
           </a>
-  <!--===== user_img end =====-->
-  <!--===== sub_menu start =====-->
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
             <li><%= link_to "新規登録", new_user_registration_path, class:"dropdown-item" %></li>
             <li><%= link_to "ログイン", new_user_session_path, class:"dropdown-item" %></li>
           </ul>
-  <!--===== sub_menu end =====-->
         <% end %>
       </div>
-<!--===== dropdown_menu end =====-->
     </div>
   </div>
 </header>
+<!--<hr class="m-0 border-color">-->
