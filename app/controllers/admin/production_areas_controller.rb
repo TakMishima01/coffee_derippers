@@ -1,4 +1,6 @@
 class Admin::ProductionAreasController < ApplicationController
+  before_action :authenticate_admin!, except: [:admin_session_path]
+
   def index
     @production_areas = ProductionArea.all
     @production_area = ProductionArea.new

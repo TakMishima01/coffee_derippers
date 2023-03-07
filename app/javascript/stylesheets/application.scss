@@ -105,3 +105,16 @@
     -o-object-fit: cover;
     object-fit: cover;
 }
+
+.primary-600 {
+  background-color: #007bff88;
+  border-color: #007bff88;
+}
+.success-600 {
+  background-color: #0d6e3f;
+  border-color: #0d6e3f;
+}
+
+.cover-container {
+  max-width: 42em;
+}

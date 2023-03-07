@@ -8,4 +8,16 @@ class Public::HomesController < ApplicationController
     @production_areas = ProductionArea.all
   end
 
+  def terms_of_use
+    @production_areas = ProductionArea.all
+  end
+
+  def privacy_policy
+    @production_areas = ProductionArea.all
+  end
+
+  def how_to
+    @production_areas = ProductionArea.all
+  end
+
 end

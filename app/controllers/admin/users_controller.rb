@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
 
-    # before_action :is_matching_login_user, only: [:edit, :update, :index, :show]
+  before_action :authenticate_admin!, except: [:admin_session_path]
 
   def index
     @users = User.page(params[:page]).per(10)

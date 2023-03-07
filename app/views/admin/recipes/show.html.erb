@@ -24,7 +24,7 @@
               <%= image_tag @recipe.get_image(450,450) %>
             </div>
             <div class="col-5 ">
-              <%= link_to "#", class: "text-reset me-4" do %>
+              <%= link_to admin_user_path(@recipe.user), class: "text-reset me-4" do %>
                 <%= @recipe.user.name %>
               <% end %>
 <!--recipe_detail_table-->
@@ -36,7 +36,7 @@
                   </tr>
                   <tr>
                     <th scope="row">産地名</th>
-                    <td><%= @recipe.production_area_id %></td>
+                    <td><%= @recipe.production_area.name %></td>
                   </tr>
                   <tr>
                     <th scope="row">焙煎度</th>

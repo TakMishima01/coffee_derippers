@@ -1,12 +1,12 @@
-<div class="tab-content border">
+<div class="tab-content border bg-white shadow-sm">
   <div class="container">
-    <div class="row row-cols-1 row-cols-md-2 g-4 py-4 mx-auto">
+    <div class="row row-cols-1 row-cols-md-3 g-4 py-4 mx-auto">
       <% @recipes.each do |recipe| %>
         <%= link_to recipe_path(recipe) do %>
-          <div class="card m-auto" style="max-width: 400px;">
+          <div class="card m-auto shadow-sm" style="max-width: 400px;">
             <div class="row g-0">
               <div class="col-md-5">
-                <%= image_tag recipe.get_image(170,170) %>
+                <%= image_tag recipe.get_image(170,170), class:"card-img" %>
               </div>
               <div class="col-md-7">
                 <div class="card-body">

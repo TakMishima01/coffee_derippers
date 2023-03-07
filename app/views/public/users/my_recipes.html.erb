@@ -6,7 +6,7 @@
   <!--===== topbar start =====-->
       <%= render'layouts/header' %>
   <!--===== topbar end =====-->
-  <main class="bg-light">
+  <main class="bg-light vh-100">
   <!--===== top_img start =====-->
 <div class="card mb-3">
   <%= image_tag 'user_top.jpg', class: "top_img bd-placeholder-img bd-placeholder-img-lg", height:"200px";%>
@@ -20,14 +20,21 @@
   <!--===== tab start =====-->
   <div class="px-5">
       <ul class="nav nav-tabs" role="tablist">
-        <li class="nav-item" role="presentation">
-          <%= link_to "レシピ", user_recipes_path, class: "nav-link border text-muted" %>
-          <!--<a href="" id="tab1" class="nav-link active" role="tab" data-bs-toggle="tab" aria-selected="true"> レシピ </a>-->
-        </li>
-        <li class="nav-item" role="presentation">
-          <%= link_to "公開レシピ", user_share_recipes_path, class: "nav-link border text-muted" %>
-          <!--<a href="#photo2" id="tab2" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="false"> 公開レシピ </a>-->
-        </li>
+        <% if @user == current_user %>
+            <li class="nav-item" role="presentation">
+              <%= link_to "レシピ", user_recipes_path, class: "nav-link border text-muted" %>
+            </li>
+          <% else %>
+          <% end %>
+          <% if @user == current_user %>
+            <li class="nav-item" role="presentation">
+              <%= link_to "公開レシピ", user_share_recipes_path, class: "nav-link border text-muted" %>
+            </li>
+          <% else %>
+            <li class="nav-item" role="presentation">
+              <%= link_to "レシピ", user_share_recipes_path, class: "nav-link border text-muted" %>
+            </li>
+          <% end %>
         <li class="nav-item" role="presentation">
           <%= link_to "マイレシピ", user_my_recipes_path, class: "nav-link active" %>
           <!--<a href="#photo2" id="tab2" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="false"> 公開レシピ </a>-->
@@ -43,17 +50,17 @@
       </ul>
 
       <!-- 写真部分 -->
-      <div class="tab-content border">
+      <div class="tab-content border bg-white shadow-sm">
         <div id="recipe_index" class="container" role="tabpanel" aria-labelledby="tab1">
-          <div class="row row-cols-1 row-cols-md-2 g-4 py-4 mx-auto">
+          <div class="row row-cols-1 row-cols-md-3 g-4 py-4 mx-auto">
 
           <% @recipes.each do |recipe| %>
-            <%= link_to recipe_path(recipe) do %>
+            <%= link_to recipe_path(recipe.recipe) do %>
 
-            <div class="card m-auto" style="max-width: 400px;">
+            <div class="card m-auto shadow-sm" style="max-width: 400px;">
               <div class="row g-0">
                 <div class="col-md-5">
-                  <%= image_tag recipe.recipe.get_image(170,170) %>
+                  <%= image_tag recipe.recipe.get_image(170,170), class:"card-img" %>
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">

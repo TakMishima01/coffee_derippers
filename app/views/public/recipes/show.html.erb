@@ -27,7 +27,7 @@
           <div class="recipe_flex">
       <!--===== image start =====-->
             <div class="col-6">
-              <%= image_tag @recipe.get_image(450,450) %>
+              <%= image_tag @recipe.get_image(450,450) ,class:"card shadow"%>
             </div>
       <!--===== image end =====-->
       <!--===== info start =====-->
@@ -55,7 +55,7 @@
                   </tr>
                   <tr>
                     <th scope="row">産地名</th>
-                    <td><%= @recipe.production_area_id %></td>
+                    <td><%= @recipe.production_area.name %></td>
                   </tr>
                   <tr>
                     <th scope="row">焙煎度</th>

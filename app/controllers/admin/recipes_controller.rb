@@ -1,4 +1,6 @@
 class Admin::RecipesController < ApplicationController
+  before_action :authenticate_admin!, except: [:admin_session_path]
+
 
   def index
     @recipes = Recipe.page(params[:page]).per(10)
@@ -11,7 +13,7 @@ class Admin::RecipesController < ApplicationController
 
   def destroy
     recipe = Recipe.find(params[:id])
-    recipe.delete
+    recipe.destroy
     redirect_to admin_recipes_path
   end
 

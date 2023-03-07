@@ -20,6 +20,10 @@ namespace :public do
 end
 
 root to: "public/homes#top"
+get '/about' => "public/homes#about", as: 'about'
+get '/terms_of_use' => "public/homes#terms_of_use", as: 'terms_of_use'
+get '/privacy_policy' => "public/homes#privacy_policy", as: 'privacy_policy'
+get '/how_to' => "public/homes#how_to", as: 'how_to'
 
 devise_scope :user do
   post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'

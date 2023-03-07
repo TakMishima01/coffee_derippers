@@ -1,48 +1,44 @@
 class Public::UsersController < ApplicationController
 
-  before_action :is_matching_login_user, only: [:edit, :update, :share_recipes]
+  before_action :is_matching_login_user, only: [:edit, :update, :show]
 
 
   def show
     @user = User.find(params[:id])
-    @recipes = @user.recipes.page(params[:page]).per(8)
+    @recipes = @user.recipes.page(params[:page]).per(9)
     @production_areas = ProductionArea.all
   end
 
   def share_recipes
-    is_matching_login_user
     @user = User.find(params[:id])
-    @recipes = @user.recipes.where(status: true).page(params[:page]).per(8)
+    @recipes = @user.recipes.where(status: true).page(params[:page]).per(9)
     @production_areas = ProductionArea.all
   end
 
   def my_recipes
-    is_matching_login_user
     @user = User.find(params[:id])
-    @recipes = @user.my_recipes.page(params[:page]).per(8)
+    @recipes = @user.my_recipes.page(params[:page]).per(9)
     @production_areas = ProductionArea.all
   end
 
   def followings
     @user = User.find(params[:id])
-    @users = @user.followings
+    @users = @user.followings.page(params[:page]).per(12)
     @production_areas = ProductionArea.all
   end
 
   def followers
     @user = User.find(params[:id])
-    @users = @user.followers
+    @users = @user.followers.page(params[:page]).per(12)
     @production_areas = ProductionArea.all
   end
 
   def edit
-    is_matching_login_user
     @user = current_user
     @production_areas = ProductionArea.all
   end
 
   def update
-    is_matching_login_user
     @user = current_user
     if @user.update(user_params)
       redirect_to user_recipes_path(current_user), notice: '変更が完了しました。'
