@@ -4,6 +4,7 @@
   <div class="col-10 ps-0">
 <!--header-->
     <%= render'layouts/header' %>
+    <%= render partial: 'layouts/flash' %>
     <main class="bg-light">
       <div class="container px-5">
         <div class="row py-4">
@@ -127,7 +128,7 @@
     <div class="col-7 mb-5"></div>
 
     <div class="col-10 text-center my-5">
-        <%= f.submit "新規登録", class: "btn btn-success btn-block px-5 me-4 fw-bold" %>
+        <%= f.submit "新規登録", data: {confirm: "登録しますか？"}, class: "btn btn-success btn-block px-5 me-4 fw-bold" %>
     </div>
   <% end %>
 

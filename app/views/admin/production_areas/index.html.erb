@@ -4,61 +4,64 @@
   <div class="col-10 ps-0">
 <!--header-->
     <%= render'layouts/admin_header' %>
+    <%= render partial: 'layouts/flash' %>
+    <main class="vh-100">
 <!--production_area_new-->
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-11 col-xl-10">
-          <div class="page-header">
-            <h3 class="px-4 mb-0 mt-3">産地一覧・追加</h3>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-11 col-xl-10">
+            <div class="page-header">
+              <h3 class="px-4 mb-0 mt-5">産地一覧・追加</h3>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="row mt-4 mb-5">
+          <div class="col-5 ms-3">
+            <%= form_with model: @production_area, url: admin_production_areas_path, class: "form-inline", local: true do |f| %>
+              <div class="form-group my-3">
+                <label class="mr-3">産地名</label>
+                <%= f.text_field :name, class: "form-control mr-3" %>
+              </div>
+              <%= f.submit '新規登録', class: "btn btn-primary"%>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-7"></div>
+      </div>
+  <!--production_areas_index-->
+      <div class="container">
+        <div class="row">
+          <div class="col-5 ms-3">
+            <table class="table table-hover mb-5">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">
+                    <div class="text-start ms-1">産地名</div>
+                  </th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <% @production_areas.each do |production_area| %>
+                <tbody>
+                  <tr>
+                    <td>
+                      <%= production_area.name %>
+                    </td>
+                    <td>
+                      <div class="text-right">
+                        <%= link_to '編集する', edit_admin_production_area_path(production_area), class: "btn btn-success" %>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              <% end %>
+            </table>
           </div>
         </div>
       </div>
-
-      <hr>
-
-      <div class="row mt-4 mb-5">
-        <div class="col-5 ms-3">
-          <%= form_with model: @production_area, url: admin_production_areas_path, class: "form-inline", local: true do |f| %>
-            <div class="form-group my-3">
-              <label class="mr-3">産地名</label>
-              <%= f.text_field :name, class: "form-control mr-3" %>
-            </div>
-            <%= f.submit '新規登録', class: "btn btn-primary"%>
-          <% end %>
-        </div>
-      </div>
-      <div class="col-7"></div>
     </div>
-<!--production_areas_index-->
-    <div class="container">
-      <div class="row">
-        <div class="col-5 ms-3">
-          <table class="table table-hover mb-5">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col">
-                  <div class="text-start ms-1">産地名</div>
-                </th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <% @production_areas.each do |production_area| %>
-              <tbody>
-                <tr>
-                  <td>
-                    <%= production_area.name %>
-                  </td>
-                  <td>
-                    <div class="text-right">
-                      <%= link_to '編集する', edit_admin_production_area_path(production_area), class: "btn btn-success" %>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            <% end %>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
+  </main>
 </div>

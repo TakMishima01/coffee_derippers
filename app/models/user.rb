@@ -15,11 +15,12 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
+  validates :name, presence: true
+  validates :email, presence: true
 
 
 
-
-
+  # ユーザー画像処理
   def get_user_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/cup_icon.jpg')
@@ -28,6 +29,7 @@ class User < ApplicationRecord
     image.variant(resize_to_fill: [width, height], gravity: "center", crop: "100x100+0+0").processed
   end
 
+  # ゲストログイン機能
   def self.guest
     find_or_create_by!(email: "guest@example.com") do |user|
       user.password = SecureRandom.urlsafe_base64

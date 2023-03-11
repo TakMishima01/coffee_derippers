@@ -5,6 +5,7 @@
   <div class="col-10 ps-0">
   <!--===== topbar start =====-->
     <%= render'layouts/header' %>
+    <%= render partial: 'layouts/flash' %>
   <!--===== topbar end =====-->
     <main class="bg-light">
   <!--===== main start =====-->
@@ -32,7 +33,7 @@
       <!--===== image end =====-->
       <!--===== info start =====-->
             <div class="col-5 ">
-              <%= link_to "#", class: "text-reset me-4" do %>
+              <%= link_to users_path(@recipe.user), class: "text-reset me-4" do %>
                 <%= @recipe.user.name %>
               <% end %>
 
@@ -158,7 +159,7 @@
                 <p><%= recipe_comment.created_at.strftime("%Y年%m月%d日 %H:%M") %></p>
                 <p class="ms-5">
                   <% if recipe_comment.user == current_user %>
-                    <%= link_to "削除", recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete, class: "btn btn-danger btn-sm py-0 mt-0" %>
+                    <%= link_to "削除", recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger btn-sm py-0 mt-0"%>
                   <% end %>
                 </p>
               </div>

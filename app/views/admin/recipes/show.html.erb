@@ -4,6 +4,7 @@
   <div class="col-10 ps-0">
 <!--header-->
     <%= render'layouts/admin_header' %>
+    <%= render partial: 'layouts/flash' %>
 <!--recipe_detail-->
     <main class="bg-light">
       <div class="container">
@@ -12,7 +13,7 @@
             <h1 class="px-4 mb-0 mt-3"><%= @recipe.name %></h1>
           </div>
           <div class="col-6">
-            <%= link_to "削除する", admin_recipe_path(@recipe), method: :delete, class: "btn btn-danger btn-lg mb-0 mt-3 px-4" %>
+            <%= link_to "削除する", admin_recipe_path(@recipe), method: :delete,data: {confirm: "削除しますか？"}, class: "btn btn-danger btn-lg mb-0 mt-3 px-4" %>
           </div>
         </div>
 
@@ -21,7 +22,7 @@
         <div class="row">
           <div class="recipe_flex">
             <div class="col-6">
-              <%= image_tag @recipe.get_image(450,450) %>
+              <%= image_tag @recipe.get_image(450,450), class:"card shadow" %>
             </div>
             <div class="col-5 ">
               <%= link_to admin_user_path(@recipe.user), class: "text-reset me-4" do %>
@@ -147,7 +148,7 @@
                       <%= recipe_comment.user.name %>
                     </td>
                     <td class="align-middle">
-                      <%= link_to "削除", admin_recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete, class: "btn btn-danger btn-sm py-0 mt-0" %>
+                      <%= link_to "削除", admin_recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete,data: {confirm: "コメントを削除しますか？"}, class: "btn btn-danger btn-sm py-0 mt-0" %>
                     </td>
                   </tr>
                 <% end %>

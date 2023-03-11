@@ -3,7 +3,7 @@
     <div class="row row-cols-1 row-cols-md-3 g-4 py-4 mx-auto">
       <% @users.each do |user| %>
         <%= link_to user_share_recipes_path(user) do %>
-          <div class="card m-auto shadow-sm" style="max-width: 400px;">
+          <div class="card m-auto shadow-sm h-100" style="max-width: 400px;">
             <div class="row g-0">
               <div class="col-md-5">
                 <%= image_tag user.get_user_image(65,65), class: "rounded-circle" %>

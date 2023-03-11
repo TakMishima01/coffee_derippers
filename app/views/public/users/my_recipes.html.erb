@@ -57,7 +57,7 @@
           <% @recipes.each do |recipe| %>
             <%= link_to recipe_path(recipe.recipe) do %>
 
-            <div class="card m-auto shadow-sm" style="max-width: 400px;">
+            <div class="card m-auto shadow-sm h-100" style="max-width: 400px;">
               <div class="row g-0">
                 <div class="col-md-5">
                   <%= image_tag recipe.recipe.get_image(170,170), class:"card-img" %>

@@ -44,6 +44,7 @@ class Public::UsersController < ApplicationController
       redirect_to user_recipes_path(current_user), notice: '変更が完了しました。'
     else
       flash.now[:error] = "空欄があります。"
+      @production_areas = ProductionArea.all
       render :edit
     end
   end
