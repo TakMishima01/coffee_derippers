@@ -5,6 +5,7 @@
     <div class="col-10 ps-0">
   <!--===== topbar start =====-->
       <%= render'layouts/header' %>
+      <%= render partial: 'layouts/flash' %>
   <!--===== topbar end =====-->
   <main class="bg-light">
   <!--===== top_img start =====-->
@@ -44,7 +45,7 @@
 
         <div class="col-4"></div>
         <div class="col-4 text-center my-5">
-            <%= f.submit "変更を登録", class: "btn btn-success btn-block px-5 me-4 fw-bold" %>
+            <%= f.submit "変更を登録",data: {confirm: "登録しますか？"}, class: "btn btn-success btn-block px-5 me-4 fw-bold" %>
         </div>
         <div class="col-4"></div>
       <% end %>

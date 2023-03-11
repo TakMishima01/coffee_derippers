@@ -1,4 +1,6 @@
 class Admin::ProductionAreasController < ApplicationController
+  before_action :authenticate_admin!, except: [:admin_session_path]
+
   def index
     @production_areas = ProductionArea.all
     @production_area = ProductionArea.new
@@ -24,7 +26,7 @@ class Admin::ProductionAreasController < ApplicationController
     if @production_area.update(production_area_params)
       redirect_to '/admin/production_areas', notice: "変更が完了しました"
     else
-      flash.now[:error] = "ジャンル名を入力してください"
+      flash.now[:error] = "産地名を名を入力してください"
       render :edit
     end
   end

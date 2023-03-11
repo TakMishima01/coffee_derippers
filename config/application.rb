@@ -17,7 +17,8 @@ module CoffeeDrippers
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
+    config.time_zone = 'Tokyo'
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end

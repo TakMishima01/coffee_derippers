@@ -1,34 +1,71 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-
-  <div class="field">
-  <%= f.label :name %><br>
-  <%= f.text_field :name %>
-</div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<section class="row top-bar">
+  <div class="bg-primary position-absolute h-100 top-0 left-0 zindex-100 col-lg-6 col-xl-6 zindex-100 d-none d-lg-flex flex-column justify-content-end" data-bg-size="cover" data-bg-position="center">
+    <%= image_tag 'top_img.jpg', class: "img-as-bg" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="container-fluid d-flex flex-column">
+    <div class="row align-items-center justify-content-center justify-content-lg-end min-vh-100">
+      <div class="col-sm-7 col-lg-6 col-xl-6 py-6 py-md-0">
+        <div class="row justify-content-center">
+          <div class="col-11 col-lg-10 col-xl-6">
+            <div>
+              <div class="mb-5">
+                <h6 class="h3 mb-1 title-color">Create your account</h6>
+                <p class="mb-0 font-color">良いコーヒータイムを始めよう！！</p>
+              </div>
+              <%= form_with model: @user, url: user_registration_path do |f| %>
+                <%= render "public/shared/error_messages", resource: resource %>
+                <div class="form-group">
+                  <%= f.label "ユーザーネーム", class: "form-label font-color" %>
+                  <div class="input-group">
+                      <span class="input-group-text">
+                        <i class="fa-solid fa-user"></i>
+                      </span>
+                    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <%= f.label "Eメールアドレス", class: "form-label font-color" %>
+                  <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="fa-solid fa-envelope"></i>
+                      </span>
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <%= f.label "パスワード", class: "form-label font-color" %>
+                    <% if @minimum_password_length %>
+                      <em class="font-color">(<%= @minimum_password_length %> 文字以上)</em>
+                    <% end %><br />
+                  <div class="input-group">
+                    <span class="input-group-text">
+                      <i class="fa-solid fa-key"></i>
+                    </span>
+                    <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <%= f.label "パスワード", class: "form-label font-color" %>
+                  <em class="font-color">(再入力)</em><br />
+                  <div class="input-group">
+                    <span class="input-group-text">
+                      <i class="fa-solid fa-circle-check"></i>
+                    </span>
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <%= f.submit "新規登録", class: "btn btn-primary primary-600 w-100" %>
+                </div>
+              <% end %>
+              <div class="py-3 text-center">
+                <span class="text-xs text-uppercase font-color">又は</span>
+              </div>
+              <%= render "public/shared/links" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+</section>

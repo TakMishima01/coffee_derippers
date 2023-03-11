@@ -5,10 +5,11 @@
     <div class="col-10 ps-0">
   <!--===== topbar start =====-->
       <%= render'layouts/header' %>
+      <%= render partial: 'layouts/flash' %>
   <!--===== topbar end =====-->
-  <main class="bg-light">
+  <main class="bg-light pb-5">
   <!--===== top_img start =====-->
-<div class="mb-4 px-0 card bg-dark text-white shadow-sm container-fluid">
+<div class="mb-4 px-0 card bg-dark text-white shadow-sm container-fluid rounded-0">
       <%= image_tag 'top_img.jpg', class: "top_img bd-placeholder-img bd-placeholder-img-lg card-img", height:"400px";%>
       <div class="card-img-overlay d-flex">
         <div class="top_img_bgcolor my-auto me-auto p-5 text-center">
@@ -20,48 +21,43 @@
   <!--===== top_img end =====-->
   <!--===== top_cards start =====-->
   <div class="container mt-5">
-    <h2 class="mb-3">新着レシピ</h2>
+    <h2 class="mb-3">人気レシピ</h2>
     <div class="row row-cols-1 row-cols-md-3 g-4 mx-5">
-      <div class="col">
-        <div class="card h-100">
-          <%= image_tag 'top_img.jpg', class: "card-img-top"%>
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <%= image_tag 'top_img.jpg', class: "card-img-top"%>
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <%= image_tag 'top_img.jpg', class: "card-img-top"%>
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
+      <% @recipe_rank.each do |recipe| %>
+
+        <div class="col">
+          <div class="card shadow h-100">
+            <%= link_to recipe_path(recipe.id) do %>
+              <%= image_tag recipe.get_image(300,300), class:"card-img-top"; %>
+            <% end %>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-2">
+                  <%= image_tag recipe.user.image, width: "32", height: "32", class: "rounded-circle" %>
+                </div>
+                <div class="col-10">
+                  <p class="card-title">
+                    <%= link_to(recipe_path(recipe.id), class:"text-dark") do %>
+                      <strong><i class="fa-solid fa-mug-hot"></i><span> <%= recipe.name %></span></strong>
+                    <% end %>
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <p class="card-text">説明：<%= recipe.point.truncate(21) %></p>
+                  <span><i class="fas fa-user"></i> By <%= link_to recipe.user.name, user_recipes_path(recipe.user.id) %> ｜ </span>
+                  <span><%= link_to "#{recipe.recipe_comments.count} コメント", recipe_path(recipe.id), class:"text-dark" %></span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
-</div>
-  <div class="text-end mt-5 me-3" >
-    <p> すべての商品を見る ></p>
+  </div>
+  <div class="text-end my-5 me-3" >
+    <%= link_to "すべてのレシピを見る", recipes_path, class: "btn btn-outline-info shadow" %>
   </div>
   <!--===== top_cards end =====-->
   </main>

@@ -1,39 +1,34 @@
 <div class="row">
-  <!--===== sidebar start =====-->
+<!--sidebar-->
   <%= render'layouts/admin_sidebar' %>
-  <!--===== sidebar end =====-->
   <div class="col-10 ps-0">
-  <!--===== topbar start =====-->
+<!--header-->
     <%= render'layouts/admin_header' %>
-  <!--===== topbar end =====-->
+    <%= render partial: 'layouts/flash' %>
+<!--recipe_detail-->
     <main class="bg-light">
-  <!--===== main start =====-->
       <div class="container">
-    <!--===== title start =====-->
         <div class="row py-4">
           <div class="col-6">
             <h1 class="px-4 mb-0 mt-3"><%= @recipe.name %></h1>
           </div>
           <div class="col-6">
-            <%= link_to "編集する", edit_recipe_path(@recipe), class: "btn btn-success btn-lg mb-0 mt-3 px-4" %>
+            <%= link_to "削除する", admin_recipe_path(@recipe), method: :delete,data: {confirm: "削除しますか？"}, class: "btn btn-danger btn-lg mb-0 mt-3 px-4" %>
           </div>
         </div>
-    <!--===== title end =====-->
+
         <hr>
-    <!--===== recipe_detail start =====-->
+
         <div class="row">
           <div class="recipe_flex">
-      <!--===== image start =====-->
             <div class="col-6">
-              <%= image_tag @recipe.get_image(450,450) %>
+              <%= image_tag @recipe.get_image(450,450), class:"card shadow" %>
             </div>
-      <!--===== image end =====-->
-      <!--===== info start =====-->
             <div class="col-5 ">
-              <%= link_to "#", class: "text-reset me-4" do %>
+              <%= link_to admin_user_path(@recipe.user), class: "text-reset me-4" do %>
                 <%= @recipe.user.name %>
               <% end %>
-              <button type="button" class="btn btn-info text-white btn-sm ms-4 mb-2">+レシピを保存</button>
+<!--recipe_detail_table-->
               <table class="col-6 table table-bordered bg-white shadow-sm">
                 <tbody>
                   <tr>
@@ -42,7 +37,7 @@
                   </tr>
                   <tr>
                     <th scope="row">産地名</th>
-                    <td><%= @recipe.production_area_id %></td>
+                    <td><%= @recipe.production_area.name %></td>
                   </tr>
                   <tr>
                     <th scope="row">焙煎度</th>
@@ -84,110 +79,49 @@
               </table>
             </div>
             <div class="col-1"></div>
-      <!--===== info end =====-->
           </div>
         </div>
-    <!--===== recipe_detail end =====-->
-    <!--===== extraction_detail start =====-->
+<!--pouring_detail_table-->
         <div class="row">
           <div class="col-11">
             <table class="table table-hover table-bordered bg-white shadow-sm">
-            <thead class="table-dark bg-secondary">
-              <tr>
-                <th scope="col">時間</th>
-                <th scope="col">注湯量（累計）</th>
-                <th scope="col">水流量（秒速）</th>
-                <th scope="col">備考</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="align-middle">
-                  0秒
-                </td>
-                <td class="align-middle">
-                  40ml(40ml)
-                </td>
-                <td class="align-middle">
-                  4ml/s
-                </td>
-                <td class="align-middle">
-                  縁までかける、スピンを行う
-                </td>
-              </tr>
-              <tr>
-                <td class="align-middle">
-                  0秒
-                </td>
-                <td class="align-middle">
-                  40ml(40ml)
-                </td>
-                <td class="align-middle">
-                  4ml/s
-                </td>
-                <td class="align-middle">
-                  縁までかける、スピンを行う
-                </td>
-              </tr>
-              <tr>
-                <td class="align-middle">
-                  45秒
-                </td>
-                <td class="align-middle">
-                  80ml(120ml)
-                </td>
-                <td class="align-middle">
-                  5ml/s
-                </td>
-                <td class="align-middle">
-                </td>
-              </tr>
-              <tr>
-                <td class="align-middle">
-                  1分30秒
-                </td>
-                <td class="align-middle">
-                  90ml(210ml)
-                </td>
-                <td class="align-middle">
-                  8ml/s
-                </td>
-                <td class="align-middle">
-
-                </td>
-              </tr>
-              <tr>
-                <td class="align-middle">
-                  3分30秒
-                </td>
-                <td class="align-middle">
-                  終了
-                </td>
-                <td class="align-middle">
-
-                </td>
-                <td class="align-middle">
-                  落ちきるまで
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          </div>
-          <div class="col-1"></div>
-        </div>
-    <!--===== extraction_detail end =====-->
-    <!--===== point start =====-->
-        <div class="row">
-          <div class="col-11">
-            <div class="point_box">
-              <span class="fw-bold">抽出のポイント・コツなど</span>
-              <p class="mt-2"><%=safe_join(@recipe.point.split("\n"),tag(:br))%></p>
+              <thead class="table-dark bg-secondary">
+                <tr>
+                  <th scope="col">時間</th>
+                  <th scope="col">注湯量（累計）</th>
+                  <th scope="col">備考</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <% @pouring_details.each do |pouring_detail| %>
+                  <tr>
+                    <td class="align-middle">
+                      <%= pouring_detail.start_at %>秒
+                    </td>
+                    <td class="align-middle">
+                      <%= pouring_detail.amount %>ml
+                    </td>
+                    <td class="align-middle">
+                      <%= pouring_detail.note %>
+                    </td>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
             </div>
+            <div class="col-1"></div>
           </div>
-          <div class="col-1"></div>
-        </div>
-    <!--===== point end =====-->
-    <!--===== comments start =====-->
+<!--point-->
+          <div class="row">
+            <div class="col-11">
+              <div class="point_box">
+                <span class="fw-bold">抽出のポイント・コツなど</span>
+                <p class="mt-2"><%=safe_join(@recipe.point.split("\n"),tag(:br))%></p>
+              </div>
+            </div>
+            <div class="col-1"></div>
+          </div>
+<!--comment-->
         <div class="row">
           <hr>
           <h5 class="fw-bold">コメント（<%= @recipe.recipe_comments.count %>）</h5>
@@ -201,32 +135,29 @@
                   <th scope="col"></th>
                 </tr>
               </thead>
-            <tbody>
-              <% @recipe.recipe_comments.each do |recipe_comment| %>
-                <tr>
-                  <td class="align-middle">
-                    <%= recipe_comment.id %>
-                  </td>
-                  <td class="align-middle">
-                    <%= recipe_comment.comment %>
-                  </td>
-                  <td class="align-middle">
-                    <%= recipe_comment.user.name %>
-                  </td>
-                  <td class="align-middle">
-                    <%= link_to "削除", admin_recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete, class: "btn btn-danger btn-sm py-0 mt-0" %>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
+              <tbody>
+                <% @recipe.recipe_comments.each do |recipe_comment| %>
+                  <tr>
+                    <td class="align-middle">
+                      <%= recipe_comment.id %>
+                    </td>
+                    <td class="align-middle">
+                      <%= recipe_comment.comment %>
+                    </td>
+                    <td class="align-middle">
+                      <%= recipe_comment.user.name %>
+                    </td>
+                    <td class="align-middle">
+                      <%= link_to "削除", admin_recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete,data: {confirm: "コメントを削除しますか？"}, class: "btn btn-danger btn-sm py-0 mt-0" %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-1"></div>
         </div>
-        <div class="col-1"></div>
       </div>
-    </div>
-    <!--===== comments end =====-->
-      </div>
-  <!--===== main end =====-->
     </main>
   </div>
 </div>

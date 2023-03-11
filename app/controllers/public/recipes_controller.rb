@@ -21,19 +21,20 @@ class Public::RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @recipe_comment = RecipeComment.new
     @production_areas = ProductionArea.all
-    @pouring_details = PouringDetail.where(params[:recipe_id])
+    @pouring_details = PouringDetail.where(recipe_id: params[:id])
   end
 
   def new
     @recipe = Recipe.new
     @production_areas = ProductionArea.all
     @recipe.pouring_details.build
-    @count = 1
   end
 
   def create
+    new
     recipe = Recipe.new(recipe_params)
     recipe.user_id = current_user.id
+
     if recipe.save
       redirect_to recipe_path(recipe), notice:  "登録が完了しました"
     else
@@ -45,16 +46,15 @@ class Public::RecipesController < ApplicationController
   def edit
     @recipe = Recipe.find(params[:id])
     @production_areas = ProductionArea.all
-    # @pouring_details = @recipe.pouring_details
   end
 
   def update
     @recipe = Recipe.find(params[:id])
-    # @pouring_details = @recipe.pouring_details
     if @recipe.update(recipe_params)
       redirect_to recipe_path(@recipe.id), notice: "変更が完了しました"
     else
       flash.now[:error] = "空欄があります"
+      @production_areas = ProductionArea.all
       render :edit
     end
   end
