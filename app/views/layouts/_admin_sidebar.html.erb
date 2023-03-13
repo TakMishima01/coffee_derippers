@@ -1,0 +1,28 @@
+<div class="col-2 pe-0 sidebar shadow-sm ps-0">
+  <div class="d-flex flex-column p-3 pe-0">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" fill="currentColor" class="bi bi-cup title-color" viewBox="0 0 16 16">
+        <path d="M1 2a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v1h.5A1.5 1.5 0 0 1 16 4.5v7a1.5 1.5 0 0 1-1.5 1.5h-.55a2.5 2.5 0 0 1-2.45 2h-8A2.5 2.5 0 0 1 1 12.5V2zm13 10h.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5H14v8zM13 2H2v10.5A1.5 1.5 0 0 0 3.5 14h8a1.5 1.5 0 0 0 1.5-1.5V2z"/>
+      </svg>
+      <span class="fs-5 fw-semibold title-color">Coffee Drippers</span>
+    </a>
+  </div>
+
+  <hr class="border-color m-0 mb-3">
+
+<!--side_menu-->
+  <div class="d-flex flex-column p-3 pe-0">
+    <span class="border rounded-pill border-4 ms-0 me-auto p-1 my-1 title-color">管理メニュー</span>
+    <ul class="list-unstyled ps-0 d-lg-block navbar-nav mt-3 ms-2">
+      <li class="nav-item mb-1">
+        <%= link_to "ユーザー一覧", admin_root_path, class: "nav-link font-color"%>
+      </li>
+      <li class="nav-item mb-1">
+        <%= link_to "産地一覧", admin_production_areas_path, class: "nav-link font-color"%>
+      </li>
+      <li class="nav-item mb-1">
+        <%= link_to "レシピ一覧", admin_recipes_path, class: "nav-link font-color"%>
+      </li>
+    </ul>
+  </div>
+</div>

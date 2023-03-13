@@ -1,0 +1,33 @@
+<div class="nested-fields row mb-2">
+
+  <div class="col-1 my-auto field">
+  </div>
+  <% f.hidden_field :recipe_id, value: @recipe.id %>
+
+  <div class="col-2 my-auto field">
+    <div class="input-group">
+      <%= f.text_field :start_at, autofocus: true, autocomplete: "start_at", class: "form-control", id: "start_at" %>
+      <div class="input-group-text">秒</div>
+    </div>
+  </div>
+
+  <div class="col-2 my-auto field">
+    <div class="input-group">
+      <%= f.text_field :amount, autofocus: true, autocomplete: "pouring_amount", class: "form-control", id: "pouring_amount" %>
+      <div class="input-group-text">ml</div>
+    </div>
+  </div>
+
+  <div class="col-5 my-auto field">
+    <div class="input-group">
+      <%= f.text_field :note, autofocus: true, autocomplete: "note", class: "form-control", id: "note" %>
+    </div>
+  </div>
+
+  <div class="col-1 my-auto field">
+    <%= link_to_remove_association "削除", f, class: "btn btn-danger btn-sm" %>
+  </div>
+  <div class="col-1"></div>
+
+
+</div>

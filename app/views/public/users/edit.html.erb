@@ -1,0 +1,60 @@
+<div class="row">
+  <!--===== sidebar start =====-->
+      <%= render'layouts/sidebar' %>
+  <!--===== sidebar end =====-->
+    <div class="col-10 ps-0">
+  <!--===== topbar start =====-->
+      <%= render'layouts/header' %>
+      <%= render partial: 'layouts/flash' %>
+  <!--===== topbar end =====-->
+  <main class="bg-light">
+  <!--===== top_img start =====-->
+<div class="card mb-3">
+  <%= image_tag 'user_top.jpg', class: "top_img bd-placeholder-img bd-placeholder-img-lg", height:"250px";%>
+  <div class="card-body">
+    <h2 class="card-title">@<%= @user.name %></h2>
+  </div>
+</div>
+  <!--===== top_img end =====-->
+  <!--===== form start =====-->
+  <div class="container">
+    <div class="row">
+      <%= form_with model: @user, url: user_path(@user), class:"row g-4" do |f| %>
+
+        <div class="col-4"></div>
+        <div class="col-4">
+          <%= f.label :ユーザー画像, for:"user_image" ,class: "form-label fw-bold fs-6" %>
+          <%= f.file_field :image, accept: "image/*", class: "form-control", id:"user_image" %>
+        </div>
+        <div class="col-4"></div>
+
+        <div class="col-4"></div>
+        <div class="col-4">
+          <%= f.label :ユーザー名, for:"user_name", class: "form-label fw-bold fs-6" %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", id: "user_name" %>
+        </div>
+        <div class="col-4"></div>
+
+        <div class="col-4"></div>
+        <div class="col-4">
+          <%= f.label :メールアドレス, for:"email", class: "form-label fw-bold fs-6" %>
+          <%= f.text_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "email" %>
+        </div>
+        <div class="col-4"></div>
+
+
+        <div class="col-4"></div>
+        <div class="col-4 text-center my-5">
+            <%= f.submit "変更を登録",data: {confirm: "登録しますか？"}, class: "btn btn-success btn-block px-5 me-4 fw-bold" %>
+        </div>
+        <div class="col-4"></div>
+      <% end %>
+    </div>
+  </div>
+    <!--%= link_to "アカウントを削除する", user_registration_path(current_user.id), class: "btn btn-danger", method: :delete %>-->
+
+  <!--===== top_cards end =====-->
+  </main>
+    </div>
+    </div>
+

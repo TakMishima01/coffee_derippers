@@ -1,0 +1,120 @@
+@import "~bootstrap/scss/bootstrap.scss";
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.top_img {
+  object-fit: cover;
+  transform: scale(-1, 1);
+  border-radius: 0;
+}
+
+.top_img_bgcolor {
+    background-color: rgba(128,128,128,0.5);
+}
+
+.recipe_flex{
+    display: flex;
+    align-items: flex-start;
+}
+
+.point_box {
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid;
+  border-color: black;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.comment_item {
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid;
+  border-color: black;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.comment_item .comment_item_info {
+  display: flex;
+    align-items: center;
+    position: relative;
+    height: 24px;
+}
+
+  .user-header {
+      position: relative;
+  }
+
+  .user-img {
+    top: -24px;
+    border-radius: 50%;
+    border: 1px solid #ebe6d0;
+    padding: 4px;
+    position: absolute;
+    background: #ffffff;
+  }
+
+.user-header-name {
+  margin-left: 110px;
+}
+
+.follow-button {
+  position: absolute;
+  left: 250px;
+  top: 20px;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.sidebar, .top-bar {
+  background-color: #1F2D3D;
+}
+
+.font-color {
+  color: #C0CCDA;
+}
+
+.title-color {
+  color: #E5E9F2;
+}
+
+.nav-link:hover {
+  color: #fff;
+}
+
+.border-color {
+  color: #E5E9F2;
+}
+
+.input-color {
+  background-color: #C0CCDA;
+}
+
+.img-as-bg {
+  position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.primary-600 {
+  background-color: #007bff88;
+  border-color: #007bff88;
+}
+.success-600 {
+  background-color: #0d6e3f;
+  border-color: #0d6e3f;
+}
+
+.cover-container {
+  max-width: 42em;
+}

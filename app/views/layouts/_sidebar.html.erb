@@ -1,0 +1,82 @@
+<div class="col-2 pe-0 sidebar ps-0">
+  <div class="d-flex flex-column p-3 pe-0">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" fill="currentColor" class="bi bi-cup title-color" viewBox="0 0 16 16">
+        <path d="M1 2a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v1h.5A1.5 1.5 0 0 1 16 4.5v7a1.5 1.5 0 0 1-1.5 1.5h-.55a2.5 2.5 0 0 1-2.45 2h-8A2.5 2.5 0 0 1 1 12.5V2zm13 10h.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5H14v8zM13 2H2v10.5A1.5 1.5 0 0 0 3.5 14h8a1.5 1.5 0 0 0 1.5-1.5V2z"/>
+      </svg>
+      <span class="fs-5 fw-semibold title-color">Coffee Drippers</span>
+    </a>
+  </div>
+
+  <hr class="border-color m-0 mb-3">
+
+<!--side_menu-->
+  <div class="d-flex flex-column p-3 pe-0">
+    <span class="border rounded-pill border-4 ms-0 me-auto p-1 mb-3 title-color">レシピを探す</span>
+
+    <%= search_form_for @search, url: recipes_path, class: "d-flex pe-1 mb-3" do |f| %>
+        <%= f.text_field :name_cont , class: "form-control me-2 input-color",placeholder: 'Search' %>
+          <%= button_tag type: "submit", class: "btn btn-success " do %>
+            <i class="fa-solid fa-magnifying-glass text-color"></i>
+          <% end %>
+    <% end %>
+
+    <ul class="list-unstyled ps-0 d-lg-block navbar-nav ms-2">
+
+      <li class="nav-item mb-1">
+        <a class="nav-link collapsed font-color" data-bs-toggle="collapse" href="#production_area" aria-expanded="false" aria-controls="production_area">
+          <div class="font-color nav-link p-0">産地名で探す</div>
+        </a>
+        <div class="collapse" id="production_area">
+          <ul class="nav nav-small flex-column">
+            <% @production_areas.each do |production_area| %>
+              <li class="nav-item">
+                <%= link_to production_area.name, recipes_path(production_area_id: production_area.id), class: "nav-link font-color" %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </li>
+
+      <li class="nav-item mb-1">
+        <% if user_signed_in? %>
+          <%= link_to "マイレシピ", user_my_recipes_path(current_user), class:"nav-link font-color" %>
+        <% else %>
+          <p class="nav-link text-muted m-0">マイレシピ</p>
+        <% end %>
+      </li>
+
+      <li class="nav-item mb-1">
+        <%= link_to "レシピ一覧", recipes_path, class:"nav-link font-color" %>
+      </li>
+    </ul>
+
+    <hr class="border-color ">
+
+<span class="border rounded-pill border-4 ms-0 me-auto p-1 mb-1 title-color">レシピを記録する</span>
+
+    <ul class="list-unstyled ps-0 d-lg-block navbar-nav ms-2 font-color">
+      <li class="nav-item mb-1">
+        <%= link_to "レシピを書く", new_recipe_path, class:"nav-link"%>
+      </li>
+      <li class="nav-item mb-1">
+        <%= link_to "記録方法", how_to_path, class:"nav-link"%>
+      </li>
+    </ul>
+
+    <hr class="border-color m-0">
+
+    <ul class="list-unstyled ps-0 d-lg-block navbar-nav ms-2 font-color">
+      <li class="nav-item mb-1">
+        <%= link_to "About", about_path, class:"nav-link"%>
+      </li>
+      <li class="nav-item mb-1">
+        <%= link_to "利用規約", terms_of_use_path, class:"nav-link"%>
+      </li>
+      <li class="nav-item mb-1">
+        <%= link_to "プライバシーポリシー", privacy_policy_path, class:"nav-link"%>
+      </li>
+    </ul>
+  <!--===== nav_list end =====-->
+  </div>
+</div>
