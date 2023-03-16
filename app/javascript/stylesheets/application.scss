@@ -1,5 +1,18 @@
-@import "~bootstrap/scss/bootstrap.scss";
+// @import "~bootstrap/scss/bootstrap.scss";デプロイできないため他の方法でインストールする
+@import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+hr {
+border-width:
+1.5px 0 0 0;
+border-style: solid;
+border-color: #E5E9F2;
+}
+
+.sidebar_logo {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
 
 .top_img {
   object-fit: cover;

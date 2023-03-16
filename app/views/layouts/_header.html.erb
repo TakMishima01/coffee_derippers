@@ -1,32 +1,31 @@
-<header class="p-3 mb-0 top-bar shadow-sm">
+<header class="p-3 mb-0 top-bar">
   <div class="container">
     <div class="d-flex flex-wrap align-items-end justify-content-end justify-content-lg-end">
-      <div class="dropdown text-end">
+      <div class="dropdown text-right">
         <% if user_signed_in? %>
 <!--ログイン時-->
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= image_tag current_user.get_user_image(32,32), class: "rounded-circle shadow" %>
             <span class="font-color">@<%= current_user.name %></span>
           </a>
-          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><%= link_to "マイページ", user_recipes_path(current_user), class:"dropdown-item" %></li>
-            <li><%= link_to "ユーザー情報編集", edit_user_path(current_user), class:"dropdown-item" %></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"dropdown-item" %></li>
-          </ul>
+          <div class="dropdown-menu dropdown-menu-right text-small" aria-labelledby="dropdownUser1">
+            <%= link_to "マイページ", user_recipes_path(current_user), class:"dropdown-item" %>
+            <%= link_to "ユーザー情報編集", edit_user_path(current_user), class:"dropdown-item" %>
+            <div class="dropdown-divider"></div>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+          </div>
         <% else %>
 <!--未ログイン時-->
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= image_tag "no_image.jpg", width: 32, heght: 32, class: "rounded-circle" %>
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= image_tag "no_image.jpg", width: 32, height: 32, class: "rounded-circle" %>
             <span class="font-color">ログイン/新規登録はこちら</span>
           </a>
-          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><%= link_to "新規登録", new_user_registration_path, class:"dropdown-item" %></li>
-            <li><%= link_to "ログイン", new_user_session_path, class:"dropdown-item" %></li>
-          </ul>
+          <div class="dropdown-menu dropdown-menu-right text-small" aria-labelledby="dropdownUser1">
+            <%= link_to "新規登録", new_user_registration_path, class:"dropdown-item" %>
+            <%= link_to "ログイン", new_user_session_path, class:"dropdown-item" %>
+          </div>
         <% end %>
       </div>
     </div>
   </div>
 </header>
-<!--<hr class="m-0 border-color">-->

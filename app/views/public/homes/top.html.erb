@@ -2,7 +2,7 @@
   <!--===== sidebar start =====-->
       <%= render'layouts/sidebar' %>
   <!--===== sidebar end =====-->
-    <div class="col-10 ps-0">
+    <div class="col-10 pl-0">
   <!--===== topbar start =====-->
       <%= render'layouts/header' %>
       <%= render partial: 'layouts/flash' %>
@@ -10,9 +10,9 @@
   <main class="bg-light pb-5">
   <!--===== top_img start =====-->
 <div class="mb-4 px-0 card bg-dark text-white shadow-sm container-fluid rounded-0">
-      <%= image_tag 'top_img.jpg', class: "top_img bd-placeholder-img bd-placeholder-img-lg card-img", height:"400px";%>
+      <%= image_tag 'top_img.jpg', class: "top_img bd-placeholder-img bd-placeholder-img-lg card-img-top shadow-sm", height:"400px";%>
       <div class="card-img-overlay d-flex">
-        <div class="top_img_bgcolor my-auto me-auto p-5 text-center">
+        <div class="top_img_bgcolor my-auto mr-auto p-5 text-center">
           <h5 class="card-title">CoffeeDrippers</h5>
           <p class="card-text">ハンドドリップレシピ共有サイト</p>
         </div>
@@ -22,13 +22,13 @@
   <!--===== top_cards start =====-->
   <div class="container mt-5">
     <h2 class="mb-3">人気レシピ</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-4 mx-5">
+    <div class="row mx-5">
       <% @recipe_rank.each do |recipe| %>
 
-        <div class="col">
+        <div class="col-md-4 col-12 mb-4">
           <div class="card shadow h-100">
             <%= link_to recipe_path(recipe.id) do %>
-              <%= image_tag recipe.get_image(300,300), class:"card-img-top"; %>
+              <%= image_tag recipe.get_image(300,300), class:"img-fluid card-img-top"; %>
             <% end %>
             <div class="card-body">
               <div class="row">
@@ -38,7 +38,7 @@
                 <div class="col-10">
                   <p class="card-title">
                     <%= link_to(recipe_path(recipe.id), class:"text-dark") do %>
-                      <strong><i class="fa-solid fa-mug-hot"></i><span> <%= recipe.name %></span></strong>
+                      <strong><i class="fa fa-mug-hot"></i><span> <%= recipe.name %></span></strong>
                     <% end %>
                   </p>
                 </div>
@@ -56,8 +56,8 @@
       <% end %>
     </div>
   </div>
-  <div class="text-end my-5 me-3" >
-    <%= link_to "すべてのレシピを見る", recipes_path, class: "btn btn-outline-info shadow" %>
+  <div class="text-right my-5 mr-5" >
+    <%= link_to "すべてのレシピを見る", recipes_path, class: "btn btn-outline-info shadow-sm" %>
   </div>
   <!--===== top_cards end =====-->
   </main>

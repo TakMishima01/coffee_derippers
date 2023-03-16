@@ -1,7 +1,7 @@
 <div class="row">
 <!--sidebar-->
   <%= render'layouts/sidebar' %>
-  <div class="col-10 ps-0">
+  <div class="col-10 pl-0">
 <!--header-->
     <%= render'layouts/header' %>
     <%= render partial: 'layouts/flash' %>
@@ -46,7 +46,7 @@
           <% end %>
         </div>
         <div class ="mx-auto mt-5" style="width: 300px;">
-          <%= paginate @recipes, theme: 'bootstrap-5' %>
+          <%= paginate @recipes%>
         </div>
       </div>
     </main>

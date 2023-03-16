@@ -8,12 +8,14 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+import "jquery";
+import "popper.js";
 import "bootstrap";
-import "../stylesheets/application.scss";
+import "../stylesheets/application"
+
 import '@fortawesome/fontawesome-free/js/all'
 import "script.js"
-// import 'jquery'
-// import '@nathanvda/cocoon'
+
 require("jquery")
 require("@nathanvda/cocoon")
 
