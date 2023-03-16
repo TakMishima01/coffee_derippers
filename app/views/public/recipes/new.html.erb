@@ -1,7 +1,7 @@
 <div class="row">
 <!--sidebar-->
   <%= render'layouts/sidebar' %>
-  <div class="col-10 ps-0">
+  <div class="col-10 pl-0">
 <!--header-->
     <%= render'layouts/header' %>
     <%= render partial: 'layouts/flash' %>
@@ -13,7 +13,9 @@
 
         <hr>
 
-        <%= form_with model: @recipe, url: recipes_path, class:"row g-4", local: true do |f| %>
+        <div class="row">
+
+        <%= form_with model: @recipe, url: recipes_path, class:"row custom-g-4", local: true do |f| %>
           <div class="col-4">
             <%= f.label :レシピトップ画像, for:"recipe_image" ,class: "form-label fw-bold fs-6" %>
             <%= f.file_field :image, accept: "image/*", class: "form-control", id:"recipe_image" %>
@@ -90,25 +92,32 @@
             <%= f.label :使用ペーパー, for: "paper", class: "form-label fw-bold fs-6" %>
             <%= f.text_field :paper, autofocus: true, autocomplete: "paper", class: "form-control", id: "paper" %>
           </div>
+          <div class="col-4"></div>
+
+          </div>
 
           <hr>
 
-          <div class="row g-3 mb-4">
-            <h5 class="fw-bold pe-0 col-auto my-auto">抽出方法</h5>
+          <div class="row my-4">
+            <h5 class="col-12 font-weight-bold mb-4">抽出方法</h5>
             <!--<button class="btn btn-secondary btn-sm my-auto col-auto ms-3">+リアルタイム記録</button>--><!--未着手のため非表示-->
-          </div>
+
 
           <%= f.fields_for :pouring_details, local: true do |pouring_detail| %>
             <%= render 'pouring_detail_fields', f: pouring_detail %>
           <% end %>
-          <div class="links d-grid gap-2 col-6 mx-auto">
-              <%= link_to_add_association '注湯情報を追加', f, :pouring_details, class: "btn btn-primary" %>
+          <div class="col-6 mx-auto">
+              <%= link_to_add_association '注湯情報を追加', f, :pouring_details, class: "btn btn-primary btn-block my-3" %>
+          </div>
+
           </div>
 
 
 
 
     <hr>
+
+<div class="row">
 
     <div class="col-10">
       <%= f.label :抽出のポイント・コツなど, for: "point", class: "form-label fw-bold mb-4 fs-5" %>
@@ -116,19 +125,25 @@
     </div>
     <div class="col-2"></div>
 
+    </div>
+
     <hr>
+
+    <div class="row">
 
     <div class="col-5">
       <%= f.label :レシピの公開・非公開, class: "form-label fw-bold mb-4 fs-5" %>
       <div class="form-check ms-5">
-        <label class="fw-bold text-muted me-4"><%= f.radio_button :status, true, style:"transform:scale(1.5)" %><span class="fs-5 ms-2">公開</span></label>
-        <label class="fw-bold text-muted"><%= f.radio_button :status, false, style:"transform:scale(1.5)", checked: true%><span class="fs-5 ms-2">非公開</span></label>
+        <label class="fw-bold text-muted mr-4"><%= f.radio_button :status, true, style:"transform:scale(1.5)" %><span class="fs-5 ml-2">公開</span></label>
+        <label class="fw-bold text-muted"><%= f.radio_button :status, false, style:"transform:scale(1.5)", checked: true%><span class="fs-5 ml-2">非公開</span></label>
       </div>
     </div>
     <div class="col-7 mb-5"></div>
 
+    </div>
+
     <div class="col-10 text-center my-5">
-        <%= f.submit "新規登録", data: {confirm: "登録しますか？"}, class: "btn btn-success btn-block px-5 me-4 fw-bold" %>
+        <%= f.submit "新規登録", data: {confirm: "登録しますか？"}, class: "btn btn-success btn-block px-5 mr-4 fw-bold" %>
     </div>
   <% end %>
 

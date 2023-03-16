@@ -131,3 +131,21 @@ border-color: #E5E9F2;
 .cover-container {
   max-width: 42em;
 }
+
+.custom-g-4 > * {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+}
+
+.custom-g-4 > * > * {
+  margin-right: calc(var(--bs-gutter-x) / 2);
+  margin-left: calc(var(--bs-gutter-x) / 2);
+}
+
+.custom-g-3 > * {
+  margin-right: 1.5rem;
+}
+/* 最後の要素の右マージンを除外 */
+.custom-g-3 > *:last-child {
+  margin-right: 0;
+}
