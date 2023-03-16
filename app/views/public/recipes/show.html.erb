@@ -33,7 +33,7 @@
       <!--===== image end =====-->
       <!--===== info start =====-->
             <div class="col-5 ">
-              <%= link_to users_path(@recipe.user), class: "text-reset me-4" do %>
+              <%= link_to user_path(@recipe.user), class: "text-reset me-4" do %>
                 <%= @recipe.user.name %>
               <% end %>
 
