@@ -2,14 +2,14 @@
   <!--===== sidebar start =====-->
   <%= render'layouts/sidebar' %>
   <!--===== sidebar end =====-->
-  <div class="col-10 ps-0">
+  <div class="col-lg-10 col-md-9 col-sm-12 pl-0">
   <!--===== topbar start =====-->
     <%= render'layouts/header' %>
     <%= render partial: 'layouts/flash' %>
   <!--===== topbar end =====-->
-    <main class="bg-light">
+    <main class="bg-light pb-5">
   <!--===== main start =====-->
-      <div class="container">
+      <div class="container-fluid">
     <!--===== title start =====-->
         <div class="row py-4">
           <div class="col-6">
@@ -33,17 +33,17 @@
       <!--===== image end =====-->
       <!--===== info start =====-->
             <div class="col-5 ">
-              <%= link_to users_path(@recipe.user), class: "text-reset me-4" do %>
+              <%= link_to user_path(@recipe.user), class: "text-reset mr-4" do %>
                 <%= @recipe.user.name %>
               <% end %>
 
               <% if @recipe.add_my_recipe_by?(current_user) %>
                 <%= link_to recipe_my_recipes_path(@recipe), method: :delete do %>
-                  <button type="button" class="btn btn-outline-info btn-sm ms-4 mb-2">-マイレシピから削除</button>
+                  <button type="button" class="btn btn-outline-info btn-sm ml-4 mb-2">-マイレシピから削除</button>
                 <% end %>
               <% else %>
                 <%= link_to recipe_my_recipes_path(@recipe), method: :post do %>
-                  <button type="button" class="btn btn-info text-white btn-sm ms-4 mb-2">+マイレシピに保存</button>
+                  <button type="button" class="btn btn-info text-white btn-sm ml-4 mb-2">+マイレシピに保存</button>
                 <% end %>
               <% end %>
 
