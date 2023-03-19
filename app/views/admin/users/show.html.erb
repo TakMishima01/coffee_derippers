@@ -2,7 +2,7 @@
 <div class="row">
 <!--sidebar-->
   <%= render'layouts/admin_sidebar' %>
-  <div class="col-10 ps-0">
+  <div class="col-10 pl-0">
 <!--header-->
     <%= render'layouts/admin_header' %>
     <%= render partial: 'layouts/flash' %>
@@ -35,9 +35,9 @@
                 <th>ステータス</th>
                 <td>
                   <% if @user.is_deleted == false %>
-                    <div class="text-success fw-bold"><%= @user.is_deleted ? '利用停止' : '有効' %></div>
+                    <div class="text-success font-weight-bold"><%= @user.is_deleted ? '利用停止' : '有効' %></div>
                   <% else %>
-                    <div class="text-black-50 fw-bold"><%= @user.is_deleted ? '利用停止' : '有効' %></div>
+                    <div class="text-black-50 font-weight-bold"><%= @user.is_deleted ? '利用停止' : '有効' %></div>
                   <% end %>
                 </td>
               </tr>
@@ -67,7 +67,7 @@
         </div>
         <div class="row">
           <div class="col-10 offset-1">
-            <table class="table table-hover table-borderless table-sm bg-white ms-0 mt-3">
+            <table class="table table-hover table-borderless table-sm bg-white ml-0 mt-3">
               <thead class="table-dark bg-secondary">
                 <tr>
                   <th scope="col">レシピID</th>
@@ -88,9 +88,9 @@
                     </td>
                     <td>
                       <% if recipe.status == false %>
-                        <div class="text-black-50 fw-bold"><%= recipe.status ? '公開' : '非公開' %></div>
+                        <div class="text-black-50 font-weight-bold"><%= recipe.status ? '公開' : '非公開' %></div>
                       <% else %>
-                        <div class="text-success fw-bold"><%= recipe.status ? '公開' : '非公開' %></div>
+                        <div class="text-success font-weight-bold"><%= recipe.status ? '公開' : '非公開' %></div>
                       <% end %>
                     </td>
                   </tr>

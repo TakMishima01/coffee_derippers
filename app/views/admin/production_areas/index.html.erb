@@ -1,7 +1,7 @@
 <div class="row">
 <!--sidebar-->
   <%= render'layouts/admin_sidebar' %>
-  <div class="col-10 ps-0">
+  <div class="col-10 pl-0">
 <!--header-->
     <%= render'layouts/admin_header' %>
     <%= render partial: 'layouts/flash' %>
@@ -19,7 +19,7 @@
         <hr>
 
         <div class="row mt-4 mb-5">
-          <div class="col-5 ms-3">
+          <div class="col-5 ml-3">
             <%= form_with model: @production_area, url: admin_production_areas_path, class: "form-inline", local: true do |f| %>
               <div class="form-group my-3">
                 <label class="mr-3">産地名</label>
@@ -34,12 +34,12 @@
   <!--production_areas_index-->
       <div class="container">
         <div class="row">
-          <div class="col-5 ms-3">
+          <div class="col-5 ml-3">
             <table class="table table-hover mb-5">
               <thead class="thead-light">
                 <tr>
                   <th scope="col">
-                    <div class="text-start ms-1">産地名</div>
+                    <div class="text-start ml-1">産地名</div>
                   </th>
                   <th scope="col"></th>
                 </tr>
