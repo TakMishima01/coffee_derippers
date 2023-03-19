@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# admin = Admin.new(:email => "admin@example.com", :password => "adminadmin")
-# admin.save!
+admin = Admin.new(:email => "admin@example.com", :password => "adminadmin")
+admin.save!
 
 # recipe = Recipe.new(:production_area_id => '1', :user_id => '1', :name => 'タリーズブラック', :coffee_beans_name => 'ブラックⅢ', :roast => '3',
 # :amount => '20', :grind => '4', :temperature => '80', :total_pouring_amount => '300', :extraction_amount => '270', :total_extraction_time => '210', :dripper => 'HARIO V60',
