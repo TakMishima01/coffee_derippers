@@ -1,27 +1,29 @@
 <div class="tab-content border bg-white shadow-sm">
   <div class="container">
-    <div class="row row-cols-1 row-cols-md-3 g-4 py-4 mx-auto">
-      <% @recipes.each do |recipe| %>
-        <%= link_to recipe_path(recipe) do %>
-          <div class="card m-auto shadow-sm h-100" style="max-width: 400px;">
-            <div class="row g-0">
-              <div class="col-md-5">
-                <%= image_tag recipe.get_image(170,170), class:"card-img" %>
-              </div>
-              <div class="col-md-7">
-                <div class="card-body">
-                  <h5 class="card-title"><%= recipe.name %></h5>
-                  <p class="card-text"><%= recipe.point.truncate(21) %></p>
-                  <p class="card-text"><small class="text-muted">作成日：<%= recipe.created_at.strftime('%Y/%m/%d') %></small></p>
+    <div class="row py-4 mx-auto">
+      <div class="card-deck mb-2">
+        <% @recipes.each do |recipe| %>
+          <%= link_to recipe_path(recipe), class: "col-md-4 mb-3" do %>
+            <div class="card m-auto shadow-sm h-100" style="max-width: 400px;">
+              <div class="row">
+                <div class="col-md-5">
+                  <%= image_tag recipe.get_image(170,170), class:"card-img", height: "100%" %>
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body px-0">
+                    <h5 class="card-title"><%= recipe.name.truncate(8) %></h5>
+                    <p class="card-text"><%= recipe.point.truncate(10) %></p>
+                    <p class="card-text"><small class="text-muted">作成日：<%= recipe.created_at.strftime('%Y/%m/%d') %></small></p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
   <div class ="mx-auto mt-4" style="width: 300px;">
-    <%= paginate @recipes, theme: 'bootstrap-5' %>
+    <%= paginate @recipes%>
   </div>
 </div>

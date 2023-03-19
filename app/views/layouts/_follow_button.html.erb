@@ -1,14 +1,20 @@
-<% if @user == current_user %>
+<% if user_signed_in? %>
+  <% if @user == current_user %>
+  <% else %>
+    <div class="text-end follow-button">
+      <% if current_user.following?(@user) %>
+        <%= link_to user_relationships_path(@user.id), method: :delete do %>
+          <button type="button" class="btn btn-outline-info btn-sm ml-4 mb-0">-フォローを外す</button>
+        <% end %>
+      <% else %>
+        <%= link_to user_relationships_path(@user.id), method: :post do %>
+          <button type="button" class="btn btn-info text-white btn-sm ml-4 mb-0">+フォローする</button>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
 <% else %>
   <div class="text-end follow-button">
-    <% if current_user.following?(@user) %>
-      <%= link_to user_relationships_path(@user.id), method: :delete do %>
-        <button type="button" class="btn btn-outline-info btn-sm ms-4 mb-2">-フォローを外す</button>
-      <% end %>
-    <% else %>
-      <%= link_to user_relationships_path(@user.id), method: :post do %>
-        <button type="button" class="btn btn-info text-white btn-sm ms-4 mb-2">+フォローする</button>
-      <% end %>
-    <% end %>
+    <button type="button" class="btn btn-info text-white btn-sm ml-4 mb-0" disabled>+フォローする</button>
   </div>
 <% end %>

@@ -20,4 +20,8 @@ class Public::HomesController < ApplicationController
     @production_areas = ProductionArea.all
   end
 
+  def please_login
+    @production_areas = ProductionArea.all
+  end
+
 end

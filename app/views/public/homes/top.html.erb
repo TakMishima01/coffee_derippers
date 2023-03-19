@@ -46,7 +46,7 @@
               <div class="row">
                 <div class="col-12">
                   <p class="card-text">説明：<%= recipe.point.truncate(21) %></p>
-                  <span><i class="fas fa-user"></i> By <%= link_to recipe.user.name, user_recipes_path(recipe.user.id) %> ｜ </span>
+                  <span><i class="fas fa-user"></i> By <%= link_to recipe.user.name, user_share_recipes_path(recipe.user.id) %> ｜ </span>
                   <span><%= link_to "#{recipe.recipe_comments.count} コメント", recipe_path(recipe.id), class:"text-dark" %></span>
                 </div>
               </div>
@@ -57,7 +57,7 @@
     </div>
   </div>
   <div class="text-right my-5 mr-5" >
-    <%= link_to "すべてのレシピを見る", recipes_path, class: "btn btn-outline-info shadow-sm" %>
+    <%= link_to "すべてのレシピを見る", recipes_path, class: "btn btn-outline-info shadow-sm mr-5" %>
   </div>
   <!--===== top_cards end =====-->
   </main>

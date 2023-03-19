@@ -1,10 +1,10 @@
 <div class="tab-content border bg-white shadow-sm">
-  <div id="recipe_index" class="container" role="tabpanel" aria-labelledby="tab1">
-    <div class="row row-cols-1 row-cols-md-3 g-4 py-4 mx-auto">
+  <div class="container">
+    <div class="row py-4 mx-auto">
       <% @users.each do |user| %>
-        <%= link_to user_share_recipes_path(user) do %>
+        <%= link_to user_share_recipes_path(user), class:"col-md-4 mb-3" do %>
           <div class="card m-auto shadow-sm h-100" style="max-width: 400px;">
-            <div class="row g-0">
+            <div class="row">
               <div class="col-md-5">
                 <%= image_tag user.get_user_image(65,65), class: "rounded-circle" %>
               </div>

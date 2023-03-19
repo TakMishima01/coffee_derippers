@@ -16,8 +16,11 @@
             <h1 class="px-4 mb-0 mt-3"><%= @recipe.name %></h1>
           </div>
           <div class="col-6">
-            <% if @recipe.user.id == current_user.id %>
-              <%= link_to "編集する", edit_recipe_path(@recipe), class: "btn btn-success btn-lg mb-0 mt-3 px-4" %>
+            <% if user_signed_in? %>
+              <% if @recipe.user.id == current_user.id %>
+                <%= link_to "編集する", edit_recipe_path(@recipe), class: "btn btn-success btn-lg mb-0 mt-3 px-4" %>
+              <% end %>
+            <% else %>
             <% end %>
           </div>
         </div>
@@ -39,14 +42,18 @@
                 <%= @recipe.user.name %>
               <% end %>
 
-              <% if @recipe.add_my_recipe_by?(current_user) %>
-                <%= link_to recipe_my_recipes_path(@recipe), method: :delete do %>
-                  <button type="button" class="btn btn-outline-info btn-sm ml-4 mb-2">-マイレシピから削除</button>
+
+              <% if user_signed_in? %>
+                <% if @recipe.add_my_recipe_by?(current_user) %>
+                  <%= link_to recipe_my_recipes_path(@recipe), method: :delete do %>
+                    <button type="button" class="btn btn-outline-info btn-sm ml-4 mb-2">-マイレシピから削除</button>
+                  <% end %>
+                <% else %>
+                  <%= link_to recipe_my_recipes_path(@recipe), method: :post do %>
+                    <button type="button" class="btn btn-info text-white btn-sm ml-4 mb-2">+マイレシピに保存</button>
+                  <% end %>
                 <% end %>
               <% else %>
-                <%= link_to recipe_my_recipes_path(@recipe), method: :post do %>
-                  <button type="button" class="btn btn-info text-white btn-sm ml-4 mb-2">+マイレシピに保存</button>
-                <% end %>
               <% end %>
 
 
@@ -183,7 +190,11 @@
               <%= form_with model: [@recipe, @recipe_comment] do |f| %>
                 <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "form-control" %>
                 <div class="my-3 text-center">
-                  <%= f.submit "送信する" , class: "btn btn-success px-5"%>
+                  <% if user_signed_in? %>
+                    <%= f.submit "送信する" , class: "btn btn-success px-5"%>
+                  <% else %>
+                    <button type="button" class="btn btn-success px-5" disabled>送信する</button>
+                  <% end %>
                 </div>
               <% end %>
           </div>

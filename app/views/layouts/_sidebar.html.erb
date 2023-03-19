@@ -60,7 +60,11 @@
 
     <ul class="list-unstyled pl-0 d-lg-block nav ml-2 font-color">
       <li class="nav-item mb-1">
-        <%= link_to "レシピを書く", new_recipe_path, class:"nav-link font-color"%>
+        <% if user_signed_in? %>
+          <%= link_to "レシピを書く", new_recipe_path, class:"nav-link font-color"%>
+        <% else %>
+          <%= link_to "レシピを書く", please_login_path, class:"nav-link font-color"%>
+        <% end %>
       </li>
       <li class="nav-item mb-1">
         <%= link_to "記録方法", how_to_path, class:"nav-link font-color"%>

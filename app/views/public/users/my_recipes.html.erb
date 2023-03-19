@@ -1,26 +1,26 @@
 <div class="row">
   <!--===== sidebar start =====-->
-      <%= render'layouts/sidebar' %>
+  <%= render'layouts/sidebar' %>
   <!--===== sidebar end =====-->
-    <div class="col-10 ps-0">
+  <div class="col-10 pl-0">
   <!--===== topbar start =====-->
-      <%= render'layouts/header' %>
+    <%= render'layouts/header' %>
   <!--===== topbar end =====-->
-  <main class="bg-light vh-100">
+    <main class="bg-light vh-100">
   <!--===== top_img start =====-->
-<div class="card mb-3">
-  <%= image_tag 'user_top.jpg', class: "top_img bd-placeholder-img bd-placeholder-img-lg", height:"200px";%>
-  <div class="card-body user-header">
-    <%= image_tag @user.get_user_image(90,90), class: "rounded-circle user-img" %>
-    <h2 class="card-title user-header-name">@<%= @user.name %></h2>
-    <%= render'layouts/follow_button' %>
-  </div>
-</div>
+      <div class="card mb-3">
+        <%= image_tag 'user_top.jpg', class: "top_img bd-placeholder-img bd-placeholder-img-lg", height:"200px";%>
+        <div class="card-body user-header">
+          <%= image_tag @user.get_user_image(90,90), class: "rounded-circle user-img" %>
+          <h2 class="card-title user-header-name">@<%= @user.name %></h2>
+          <%= render'layouts/follow_button' %>
+        </div>
+      </div>
   <!--===== top_img end =====-->
   <!--===== tab start =====-->
-  <div class="px-5">
-      <ul class="nav nav-tabs" role="tablist">
-        <% if @user == current_user %>
+      <div class="px-5">
+        <ul class="nav nav-tabs" role="tablist">
+          <% if @user == current_user %>
             <li class="nav-item" role="presentation">
               <%= link_to "レシピ", user_recipes_path, class: "nav-link border text-muted" %>
             </li>
@@ -35,54 +35,49 @@
               <%= link_to "レシピ", user_share_recipes_path, class: "nav-link border text-muted" %>
             </li>
           <% end %>
-        <li class="nav-item" role="presentation">
-          <%= link_to "マイレシピ", user_my_recipes_path, class: "nav-link active" %>
-          <!--<a href="#photo2" id="tab2" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="false"> 公開レシピ </a>-->
-        </li>
-        <li class="nav-item" role="presentation">
-          <%= link_to "フォロー", user_followings_path, class: "nav-link border text-muted" %>
-          <!--<a href="#photo3" id="tab3" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="false"> フォロー </a>-->
-        </li>
-        <li class="nav-item" role="presentation">
-          <%= link_to "フォロワー", user_followers_path, class: "nav-link border text-muted" %>
-          <!--<a href="#photo4" id="tab4" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="false"> フォロワー </a>-->
-        </li>
-      </ul>
-
+          <li class="nav-item" role="presentation">
+            <%= link_to "マイレシピ", user_my_recipes_path, class: "nav-link active" %>
+          </li>
+          <li class="nav-item" role="presentation">
+            <%= link_to "フォロー", user_followings_path, class: "nav-link border text-muted" %>
+          </li>
+          <li class="nav-item" role="presentation">
+            <%= link_to "フォロワー", user_followers_path, class: "nav-link border text-muted" %>
+          </li>
+        </ul>
       <!-- 写真部分 -->
-      <div class="tab-content border bg-white shadow-sm">
-        <div id="recipe_index" class="container" role="tabpanel" aria-labelledby="tab1">
-          <div class="row row-cols-1 row-cols-md-3 g-4 py-4 mx-auto">
-
-          <% @recipes.each do |recipe| %>
-            <%= link_to recipe_path(recipe.recipe) do %>
-
-            <div class="card m-auto shadow-sm h-100" style="max-width: 400px;">
-              <div class="row g-0">
-                <div class="col-md-5">
-                  <%= image_tag recipe.recipe.get_image(170,170), class:"card-img" %>
-                </div>
-                <div class="col-md-7">
-                  <div class="card-body">
-                    <h5 class="card-title"><%= recipe.recipe.name %></h5>
-                    <p class="card-text"><%= recipe.recipe.point.truncate(21) %></p>
-                    <p class="card-text"><small class="text-muted">作成日：<%= recipe.recipe.created_at.strftime('%Y/%m/%d') %></small></p>
-                  </div>
-                </div>
+        <div class="tab-content border bg-white shadow-sm">
+          <div id="recipe_index" class="container" role="tabpanel" aria-labelledby="tab1">
+            <div class="row py-4 mx-auto">
+              <div class="card-deck mb-2">
+                <% @recipes.each do |recipe| %>
+                  <%= link_to recipe_path(recipe.recipe), class: "col-md-4 mb-3" do %>
+                    <div class="card m-auto shadow-sm h-100" style="max-width: 400px;">
+                      <div class="row">
+                        <div class="col-md-5">
+                          <%= image_tag recipe.recipe.get_image(170,170), class:"card-img", height: "100%" %>
+                        </div>
+                        <div class="col-md-7">
+                          <div class="card-body px-0">
+                            <h5 class="card-title"><%= recipe.recipe.name.truncate(8) %></h5>
+                            <p class="card-text"><%= recipe.recipe.point.truncate(10) %></p>
+                            <p class="card-text"><small class="text-muted">作成日：<%= recipe.recipe.created_at.strftime('%Y/%m/%d') %></small></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
               </div>
             </div>
-            <% end %>
-          <% end %>
-    </div>
-
+          </div>
+          <div class ="mx-auto mt-4" style="width: 300px;">
+            <%= paginate @recipes %>
+          </div>
         </div>
-      <div class ="mx-auto mt-4" style="width: 300px;">
-        <%= paginate @recipes, theme: 'bootstrap-5' %>
       </div>
-      </div>
-    </div>
   <!--===== tab end =====-->
-  </main>
-    </div>
-    </div>
+    </main>
+  </div>
+</div>
 
