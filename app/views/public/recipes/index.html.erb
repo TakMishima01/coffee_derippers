@@ -6,8 +6,8 @@
     <%= render'layouts/header' %>
     <%= render partial: 'layouts/flash' %>
 
-    <main class="bg-light pb-5">
-      <div class="container-fluid">
+    <main class="bg-light pb-5 px-4">
+      <div class="container-fluid px-3">
         <div class="row py-4">
           <div class="col-12">
             <h1 class="px-4 mb-0 mt-3"><%= @title + "一覧" %><small>（全 <%= @recipes_count %> 件）</small></h1>
@@ -16,13 +16,15 @@
 
         <hr class="my-4">
 <!--recipe_index-->
-        <div class="row mb-5 px-5">
+        <div class="row mb-5">
           <% @recipes.each do |recipe| %>
             <div class="col-md-3 mb-3">
-              <div class="card mx-auto mt-4 shadow h-100 ">
-                <%= link_to recipe_path(recipe.id) do %>
-                  <%= image_tag recipe.get_image(300,300), class:"card-img-top"; %>
-                <% end %>
+              <div class="card mx-auto mt-4 shadow h-100">
+                <!--<div class="card-img-top" , width="100%">-->
+                  <%= link_to recipe_path(recipe.id) do %>
+                    <%= image_tag recipe.get_image(300,300), class:"cover-image card-img-top", width: "100%"%>
+                  <% end %>
+                <!--</div>-->
                 <div class="card-body">
                   <div class="row align-items-center mb-2">
                     <div class="col-2">

@@ -1,10 +1,10 @@
 class Recipe < ApplicationRecord
 
-  belongs_to :user
+  belongs_to :user, optional: true
   has_one_attached :image
   has_many :recipe_comments, dependent: :destroy
   has_many :my_recipes, dependent: :destroy
-  belongs_to :production_area
+  belongs_to :production_area, optional: true
 
   has_many :pouring_details, dependent: :destroy
   accepts_nested_attributes_for :pouring_details, reject_if: :all_blank, allow_destroy: true

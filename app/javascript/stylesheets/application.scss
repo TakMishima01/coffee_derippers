@@ -71,8 +71,8 @@ hr {
 
 .follow-button {
   position: absolute;
-  left: 250px;
-  top: 20px;
+  left: 450px;
+  top: 26px;
 }
 
 .form-signin {
@@ -188,3 +188,15 @@ div.content_text p.tR {
   line-height: 140%;
   text-align: right;
 }
+
+.cover-image {
+  height: 300px;
+  object-fit: cover; /* 画像をカードにぴったりとフィットさせる */
+}
+
+// .cover-image {
+//   width: 300px;
+//   height: 300px;
+//   object-fit: cover;
+//   overflow: hidden;
+// }

@@ -4,7 +4,7 @@ class CreatePouringDetails < ActiveRecord::Migration[6.1]
       t.integer :recipe_id, null: false
       t.integer :start_at, null: false, default: 0
       t.integer :amount, null: false
-      t.text :note, null: false
+      t.text :note
 
       t.timestamps
     end

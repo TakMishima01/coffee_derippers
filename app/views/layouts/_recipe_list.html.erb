@@ -3,13 +3,14 @@
     <div class="row py-4 mx-auto">
       <div class="card-deck mb-2">
         <% @recipes.each do |recipe| %>
-          <%= link_to recipe_path(recipe), class: "col-md-4 mb-3" do %>
+          <%= link_to recipe_path(recipe), class: "mb-3 mx-3
+          " do %>
             <div class="card m-auto shadow-sm h-100" style="max-width: 400px;">
-              <div class="row">
+              <div class="row no-gutters">
                 <div class="col-md-5">
                   <%= image_tag recipe.get_image(170,170), class:"card-img", height: "100%" %>
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-7 pl-3">
                   <div class="card-body px-0">
                     <h5 class="card-title"><%= recipe.name.truncate(8) %></h5>
                     <p class="card-text"><%= recipe.point.truncate(10) %></p>

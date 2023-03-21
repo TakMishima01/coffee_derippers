@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2023_02_13_010640) do
     t.integer "recipe_id", null: false
     t.integer "start_at", default: 0, null: false
     t.integer "amount", null: false
-    t.text "note", null: false
+    t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
