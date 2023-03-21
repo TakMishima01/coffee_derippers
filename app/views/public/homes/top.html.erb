@@ -26,32 +26,34 @@
       <% @recipe_rank.each do |recipe| %>
 
         <div class="col-md-4 col-12 mb-4">
-          <div class="card shadow h-100">
-            <%= link_to recipe_path(recipe.id) do %>
-              <%= image_tag recipe.get_image(300,300), class:"img-fluid card-img-top"; %>
-            <% end %>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-2">
-                  <%= image_tag recipe.user.image, width: "32", height: "32", class: "rounded-circle" %>
-                </div>
-                <div class="col-10">
-                  <p class="card-title">
-                    <%= link_to(recipe_path(recipe.id), class:"text-dark") do %>
-                      <strong><i class="fa fa-mug-hot"></i><span> <%= recipe.name %></span></strong>
-                    <% end %>
-                  </p>
+          <div class="card mx-auto mt-4 shadow h-100">
+                <!--<div class="card-img-top" , width="100%">-->
+                  <%= link_to recipe_path(recipe.id) do %>
+                    <%= image_tag recipe.get_image(300,300), class:"cover-image card-img-top", width: "100%"%>
+                  <% end %>
+                <!--</div>-->
+                <div class="card-body">
+                  <div class="row align-items-center mb-2">
+                    <div class="col-2">
+                      <%= image_tag recipe.user.image, width: "32", height: "32", class: "rounded-circle" %>
+                    </div>
+                    <div class="col-10">
+                      <p class="card-title mb-0">
+                        <%= link_to(recipe_path(recipe.id), class:"text-dark") do %>
+                          <strong><i class="fa fa-mug-hot ml-1"></i><span> <%= recipe.name %></span></strong>
+                        <% end %>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-12">
+                      <p class="card-text mb-1">説明：<%= recipe.point.truncate(21) %></p>
+                      <span><i class="fas fa-user"></i> By <%= link_to recipe.user.name, user_share_recipes_path(recipe.user.id) %> ｜ </span>
+                      <span><%= link_to "#{recipe.recipe_comments.count} コメント", recipe_path(recipe.id), class:"text-dark" %></span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-12">
-                  <p class="card-text">説明：<%= recipe.point.truncate(21) %></p>
-                  <span><i class="fas fa-user"></i> By <%= link_to recipe.user.name, user_share_recipes_path(recipe.user.id) %> ｜ </span>
-                  <span><%= link_to "#{recipe.recipe_comments.count} コメント", recipe_path(recipe.id), class:"text-dark" %></span>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       <% end %>
     </div>

@@ -6,14 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-admin = Admin.new(:email => "admin@example.com", :password => "adminadmin")
-admin.save!
+# admin = Admin.new(:email => "admin@example.com", :password => "adminadmin")
+# admin.save!
 
-users = User.create!(
-  [
-    {email:'john_doe@example.com', name: 'john_doe', password: 'testpassword', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename:"sample-user1.jpg")},
-    {email:'jane_smith@example.com', name: 'jane_smith', password: 'testpassword' ,image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename:"sample-user2.jpg")},
-    {email:'mike_jones@example.com', name: 'mike_jones', password: 'testpassword', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.jpg"), filename:"sample-user3.jpg")},
+# users = User.create!(
+  # [
+    # {email:'john_doe@example.com', name: 'john_doe', password: 'testpassword', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename:"sample-user1.jpg")},
+    # {email:'jane_smith@example.com', name: 'jane_smith', password: 'testpassword' ,image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename:"sample-user2.jpg")},
+    # {email:'mike_jones@example.com', name: 'mike_jones', password: 'testpassword', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.jpg"), filename:"sample-user3.jpg")},
     {email:'sara_kim@example.com', name: 'sara_kim', password: 'testpassword', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user4.jpg"), filename:"sample-user4.jpg")},
     {email:'david_lee@example.com', name: 'david_lee', password: 'testpassword', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user5.jpg"), filename:"sample-user5.jpg")},
     {email:'mary_smith@example.com', name: 'mary_smith', password: 'testpassword', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user6.jpg"), filename:"sample-user6.jpg")},
