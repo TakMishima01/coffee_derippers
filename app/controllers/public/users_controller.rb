@@ -5,19 +5,19 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @recipes = @user.recipes.page(params[:page]).per(9)
+    @recipes = @user.recipes.page(params[:page]).per(8)
     @production_areas = ProductionArea.all
   end
 
   def share_recipes
     @user = User.find(params[:id])
-    @recipes = @user.recipes.where(status: true).page(params[:page]).per(9)
+    @recipes = @user.recipes.where(status: true).page(params[:page]).per(8)
     @production_areas = ProductionArea.all
   end
 
   def my_recipes
     @user = User.find(params[:id])
-    @recipes = @user.my_recipes.page(params[:page]).per(9)
+    @recipes = @user.my_recipes.page(params[:page]).per(8)
     @production_areas = ProductionArea.all
   end
 
