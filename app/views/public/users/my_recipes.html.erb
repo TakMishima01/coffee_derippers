@@ -51,9 +51,9 @@
             <div class="row py-4 mx-auto">
               <div class="card-deck mb-2">
                 <% @recipes.each do |recipe| %>
-                  <%= link_to recipe_path(recipe.recipe), class: "mb-3" do %>
+                  <%= link_to recipe_path(recipe.recipe), class: "mb-3 mx-3" do %>
                     <div class="card m-auto shadow-sm h-100" style="max-width: 400px;">
-                      <div class="row">
+                      <div class="row  no-gutters">
                         <div class="col-md-5">
                           <%= image_tag recipe.recipe.get_image(200,200), class:"card-img", height: "100%" %>
                         </div>

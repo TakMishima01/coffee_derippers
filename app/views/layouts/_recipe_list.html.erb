@@ -3,8 +3,7 @@
     <div class="row py-4 mx-auto">
       <div class="card-deck mb-2">
         <% @recipes.each do |recipe| %>
-          <%= link_to recipe_path(recipe), class: "mb-3 mx-3
-          " do %>
+          <%= link_to recipe_path(recipe), class: "mb-3 mx-3" do %>
             <div class="card m-auto shadow-sm h-100" style="max-width: 400px;">
               <div class="row no-gutters">
                 <div class="col-md-5">
