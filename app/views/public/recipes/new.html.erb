@@ -35,10 +35,11 @@
               <%= f.label :使用豆, for:"beans_name",class: "form-label font-weight-bold fs-6 mt-3" %>
                 <%= f.text_field :coffee_beans_name, autofocus: true, autocomplete: "coffee_beans_name", class: "form-control",id: "beans_name" %>
             </div>
-            <div class="col-2">
+            <div class="col-1">
               <%= f.label :焙煎度, for: "select_roast", class: "form-label font-weight-bold fs-6 mt-3" %>
               <%= f.select :roast, Recipe.roasts.keys.map {|k| [I18n.t("enums.recipe.roast.#{k}"), k]}, {}, {class: "btn btn-outline-secondary dropdown-toggle form-select"} %>
             </div>
+            <div class="col-1"></div>
             <div class="col-2">
               <%= f.label :豆使用量, for:"beans_amount", class: "form-label font-weight-bold fs-6 mt-3" %>
               <div class="input-group">
@@ -48,11 +49,11 @@
                 </div>
               </div>
             </div>
-            <div class="col-2">
+            <div class="col-1">
               <%= f.label :挽目, for: "select_grind", class: "form-label font-weight-bold fs-6 mt-3" %>
               <%= f.select :grind, Recipe.grinds.keys.map {|k| [I18n.t("enums.recipe.grind.#{k}"), k]}, {}, {class: "btn btn btn-outline-secondary dropdown-toggle form-select"} %>
             </div>
-            <div class="col-2"></div>
+            <div class="col-3"></div>
 
             <div class="col-2">
               <%= f.label :湯温, for: "temperature", class: "form-label font-weight-bold fs-6 mt-3" %>
