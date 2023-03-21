@@ -13,8 +13,6 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
 
-import "script.js"
-
 require("jquery")
 require("@nathanvda/cocoon")
 
