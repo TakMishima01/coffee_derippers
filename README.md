@@ -29,4 +29,7 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
-## 使用素材
+## 使用gem
+- bootstrap4.5
+- fontawesome
+- cocoon
