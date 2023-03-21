@@ -6,22 +6,30 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-admin = Admin.new(:email => "admin@example.com", :password => "adminadmin")
-admin.save!
+# admin = Admin.new(:email => "admin@example.com", :password => "adminadmin")
+# admin.save!
 
-# recipe = Recipe.new(:production_area_id => '1', :user_id => '1', :name => 'タリーズブラック', :coffee_beans_name => 'ブラックⅢ', :roast => '3',
-# :amount => '20', :grind => '4', :temperature => '80', :total_pouring_amount => '300', :extraction_amount => '270', :total_extraction_time => '210', :dripper => 'HARIO V60',
-# :paper => 'ハリオ純正', :point => '粕谷さんの４：６メソッドを参考に抽出しました。', :status => 'false')
-# recipe.save!
-
-# extraction_detail = ExtractionDetail.new(:recipe_id => '1',:start_at =>'0', :end_at => '20', :pouring_amount => '40', :note =>'縁までかける')
-# extraction_detail.save!
-
-# extraction_detail = ExtractionDetail.new(:recipe_id => '1',:start_at =>'45', :end_at => '55', :pouring_amount => '80', :note =>'')
-# extraction_detail.save!
-
-# extraction_detail = ExtractionDetail.new(:recipe_id => '1',:start_at =>'90', :end_at => '100', :pouring_amount => '90', :note =>'')
-# extraction_detail.save!
-
-# extraction_detail = ExtractionDetail.new(:recipe_id => '1',:start_at =>'130', :end_at => '55', :pouring_amount => '80', :note =>'')
-# extraction_detail.save!
+users = User.create!(
+  [
+    {email:'john_doe@example.com', name: 'john_doe', password: 'testpassword'},
+    {email:'janesmith@example.com', name: 'janesmith', password: 'testpassword'},
+    {email:'mike_jones@example.com', name: 'mike_jones', password: 'testpassword'},
+    {email:'sara_kim@example.com', name: 'sara_kim', password: 'testpassword'},
+    {email:'david_lee@example.com', name: 'david_lee', password: 'testpassword'},
+    {email:'mary_smith@example.com', name: 'mary_smith', password: 'testpassword'},
+    {email:'jason_kim@example.com', name: 'jason_kim', password: 'testpassword'},
+    {email:'emily_wang@example.com', name: 'emily_wang', password: 'testpassword'},
+    {email:'peter_nguyen@example.com', name: 'peter_nguyen', password: 'testpassword'},
+    {email:'stephanie_choi@example.com', name: 'stephanie_choi', password: 'testpassword'},
+    {email:'kevin_kang@example.com', name: 'kevin_kang', password: 'testpassword'},
+    {email:'jennifer_park@example.com', name: 'jennifer_park', password: 'testpassword'},
+    {email:'joshua_lee@example.com', name: 'joshua_lee', password: 'testpassword'},
+    {email:'kristen_kim@example.com', name: 'kristen_kim', password: 'testpassword'},
+    {email:'benjamin_wong@example.com', name: 'benjamin_wong', password: 'testpassword'},
+    {email:'rachel_kim@example.com', name: 'rachel_kim', password: 'testpassword'},
+    {email:'andrew_lee@example.com', name: 'andrew_lee', password: 'testpassword'},
+    {email:'lisa_wang@example.com', name: 'lisa_wang', password: 'testpassword'},
+    {email:'samuel_kim@example.com', name: 'samuel_kim', password: 'testpassword'},
+    {email:'julia_choi@example.com', name: 'julia_choi', password: 'testpassword'}
+  ]
+)
