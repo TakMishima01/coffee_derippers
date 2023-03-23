@@ -12,9 +12,8 @@
         </div>
 
         <hr>
-
-        <div class="row">
-          <%= form_with model: @recipe, url: recipes_path, class:"row custom-g-4", local: true do |f| %>
+        <%= form_with model: @recipe, url: recipes_path, local: true do |f| %>
+          <div class="row custom-g-4">
             <div class="col-4">
               <%= f.label :レシピトップ画像, for:"recipe_image" ,class: "form-label font-weight-bold fs-6 mt-3" %>
               <%= f.file_field :image, accept: "image/*", class: "form-control-file", id:"recipe_image" %>
@@ -146,7 +145,6 @@
           </div>
         <% end %>
       </div>
-  <!--===== form end =====-->
     </main>
   </div>
 </div>
