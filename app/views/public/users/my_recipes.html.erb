@@ -1,13 +1,11 @@
 <div class="row">
-  <!--===== sidebar start =====-->
+  <!--sidebar start-->
   <%= render'layouts/sidebar' %>
-  <!--===== sidebar end =====-->
   <div class="col-10 pl-0">
-  <!--===== topbar start =====-->
+  <!--topbar start-->
     <%= render'layouts/header' %>
-  <!--===== topbar end =====-->
     <main class="bg-light vh-100">
-  <!--===== top_img start =====-->
+  <!--top_img-->
       <div class="card mb-3">
         <%= image_tag 'user_top.jpg', class: "top_img bd-placeholder-img bd-placeholder-img-lg", height:"200px";%>
         <div class="card-body user-header">
@@ -16,8 +14,7 @@
           <%= render'layouts/follow_button' %>
         </div>
       </div>
-  <!--===== top_img end =====-->
-  <!--===== tab start =====-->
+  <!--tab-->
       <div class="px-5">
         <ul class="nav nav-tabs" role="tablist">
           <% if @user == current_user %>
@@ -55,7 +52,7 @@
                     <div class="card m-auto shadow-sm h-100" style="max-width: 400px;">
                       <div class="row no-gutters">
                         <div class="col-md-5">
-                          <%= image_tag recipe.recipe.get_image(200,200), class:"card-img", height: "100%" %>
+                          <%= image_tag recipe.recipe.get_image(170,170), class:"card-img", height: "100%" %>
                         </div>
                         <div class="col-md-7 pl-3">
                           <div class="card-body px-0">
@@ -76,7 +73,6 @@
           </div>
         </div>
       </div>
-  <!--===== tab end =====-->
     </main>
   </div>
 </div>
