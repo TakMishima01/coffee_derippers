@@ -15,14 +15,12 @@
     <span class="border rounded-pill border-4 ml-2 mr-auto p-1 mb-3 title-color">レシピを探す</span>
 
     <%= search_form_for @search, url: recipes_path, class: "d-flex pr-1 mb-3" do |f| %>
-        <%= f.text_field :name_cont , class: "form-control mx-2 input-color",placeholder: 'Search' %>
-          <%= button_tag type: "submit", class: "btn btn-success " do %>
-            <i class="fa-solid fa-magnifying-glass text-color"></i>
-          <% end %>
+      <%= f.text_field :name_cont , class: "form-control mx-2 input-color",placeholder: 'Search' %>
+      <%= button_tag type: "submit", class: "btn btn-success " do %>
+        <i class="fa-solid fa-magnifying-glass text-color"></i>
+      <% end %>
     <% end %>
-
     <ul class="list-unstyled pl-0 d-lg-block nav ml-2">
-
       <li class="nav-item mb-1">
         <a class="nav-link collapsed font-color" data-toggle="collapse" href="#production_area" aria-expanded="false" aria-controls="production_area">
           <div class="font-color nav-link p-0">産地名で探す</div>
@@ -37,7 +35,6 @@
           </ul>
         </div>
       </li>
-
       <li class="nav-item mb-1">
         <% if user_signed_in? %>
           <%= link_to "マイレシピ", user_my_recipes_path(current_user), class:"nav-link font-color" %>
@@ -45,19 +42,16 @@
           <p class="nav-link text-muted m-0">マイレシピ</p>
         <% end %>
       </li>
-
       <li class="nav-item mb-1">
         <%= link_to "レシピ一覧", recipes_path, class:"nav-link font-color" %>
       </li>
     </ul>
-    </div>
+  </div>
 
-    <hr class="m-0 mb-3">
+  <hr class="m-0 mb-3">
 
-    <div class="d-flex flex-column p-3 pr-0">
-
+  <div class="d-flex flex-column p-3 pr-0">
     <span class="border rounded-pill ml-2 mr-auto p-1 mb-3 title-color">レシピを記録する</span>
-
     <ul class="list-unstyled pl-0 d-lg-block nav ml-2 font-color">
       <li class="nav-item mb-1">
         <% if user_signed_in? %>
@@ -70,12 +64,11 @@
         <%= link_to "記録方法", how_to_path, class:"nav-link font-color"%>
       </li>
     </ul>
-    </div>
+  </div>
 
-    <hr class="m-0 mb-3">
+  <hr class="m-0 mb-3">
 
-    <div class="d-flex flex-column p-3 pr-0">
-
+  <div class="d-flex flex-column p-3 pr-0">
     <ul class="list-unstyled pl-0 d-lg-block nav ml-2 font-color">
       <li class="nav-item mb-1">
         <%= link_to "About", about_path, class:"nav-link font-color"%>
@@ -87,6 +80,5 @@
         <%= link_to "プライバシーポリシー", privacy_policy_path, class:"nav-link font-color"%>
       </li>
     </ul>
-  <!--===== nav_list end =====-->
   </div>
 </div>

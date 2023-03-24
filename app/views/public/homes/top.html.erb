@@ -1,37 +1,31 @@
 <div class="row">
-  <!--===== sidebar start =====-->
-      <%= render'layouts/sidebar' %>
-  <!--===== sidebar end =====-->
-    <div class="col-10 pl-0">
-  <!--===== topbar start =====-->
-      <%= render'layouts/header' %>
-      <%= render partial: 'layouts/flash' %>
-  <!--===== topbar end =====-->
-  <main class="bg-light pb-5">
-  <!--===== top_img start =====-->
-<div class="mb-4 px-0 card bg-dark text-white shadow-sm container-fluid rounded-0">
-      <%= image_tag 'top_img.jpg', class: "top_img bd-placeholder-img bd-placeholder-img-lg card-img-top shadow-sm", height:"400px";%>
-      <div class="card-img-overlay d-flex">
-        <div class="top_img_bgcolor my-auto mr-auto p-5 text-center">
-          <h5 class="card-title">CoffeeDrippers</h5>
-          <p class="card-text">ハンドドリップレシピ共有サイト</p>
+  <!--sidebar-->
+  <%= render'layouts/sidebar' %>
+  <div class="col-10 pl-0">
+  <!--topbar-->
+    <%= render'layouts/header' %>
+    <%= render partial: 'layouts/flash' %>
+    <main class="bg-light pb-5">
+  <!--top_img-->
+      <div class="mb-4 px-0 card bg-dark text-white shadow-sm container-fluid rounded-0">
+        <%= image_tag 'top_img.jpg', class: "top_img bd-placeholder-img bd-placeholder-img-lg card-img-top shadow-sm", height:"400px";%>
+        <div class="card-img-overlay d-flex">
+          <div class="top_img_bgcolor my-auto mr-auto p-5 text-center">
+            <h5 class="card-title">CoffeeDrippers</h5>
+            <p class="card-text">ハンドドリップレシピ共有サイト</p>
+          </div>
         </div>
       </div>
-    </div>
-  <!--===== top_img end =====-->
-  <!--===== top_cards start =====-->
-  <div class="container mt-5">
-    <h2 class="mb-3">人気レシピ</h2>
-    <div class="row mx-5">
-      <% @recipe_rank.each do |recipe| %>
-
-        <div class="col-md-4 col-12 mb-4">
-          <div class="card mx-auto mt-4 shadow h-100">
-                <!--<div class="card-img-top" , width="100%">-->
-                  <%= link_to recipe_path(recipe.id) do %>
-                    <%= image_tag recipe.get_image(300,300), class:"cover-image card-img-top", width: "100%"%>
-                  <% end %>
-                <!--</div>-->
+  <!--top_cards-->
+      <div class="container mt-5">
+        <h2 class="mb-3">人気レシピ</h2>
+        <div class="row mx-5">
+          <% @recipe_rank.each do |recipe| %>
+            <div class="col-md-4 col-12 mb-4">
+              <div class="card mx-auto mt-4 shadow h-100">
+                <%= link_to recipe_path(recipe.id) do %>
+                  <%= image_tag recipe.get_image(300,300), class:"cover-image card-img-top", width: "100%"%>
+                <% end %>
                 <div class="card-body">
                   <div class="row align-items-center mb-2">
                     <div class="col-2">
@@ -54,15 +48,14 @@
                   </div>
                 </div>
               </div>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-    </div>
+      </div>
+      <div class="text-right my-5 mr-5" >
+        <%= link_to "すべてのレシピを見る", recipes_path, class: "btn btn-outline-info shadow-sm mr-5" %>
+      </div>
+    </main>
   </div>
-  <div class="text-right my-5 mr-5" >
-    <%= link_to "すべてのレシピを見る", recipes_path, class: "btn btn-outline-info shadow-sm mr-5" %>
-  </div>
-  <!--===== top_cards end =====-->
-  </main>
-    </div>
-    </div>
+</div>
 

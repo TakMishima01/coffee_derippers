@@ -1,8 +1,6 @@
 <div class="nested-fields row mb-2 d-flex align-items-center">
-
   <div class="col-1 my-auto mx-0 field"></div>
   <% f.hidden_field :recipe_id, value: @recipe.id %>
-
   <div class="col-2 my-auto mx-0 field">
     <div class="input-group">
       <%= f.text_field :start_at, autofocus: true, autocomplete: "start_at", class: "form-control", id: "start_at" %>
@@ -11,7 +9,6 @@
       </div>
     </div>
   </div>
-
   <div class="col-2 my-auto mx-0 field">
     <div class="input-group">
       <%= f.text_field :amount, autofocus: true, autocomplete: "pouring_amount", class: "form-control", id: "pouring_amount" %>
@@ -20,16 +17,12 @@
       </div>
     </div>
   </div>
-
   <div class="col-5 my-auto mx-0 field">
     <div class="input-group">
       <%= f.text_field :note, autofocus: true, autocomplete: "note", class: "form-control", id: "note" %>
     </div>
   </div>
-
   <div class="col-2 my-auto mx-0 field">
     <%= link_to_remove_association "削除", f, class: "btn btn-danger btn-sm" %>
   </div>
-
-
 </div>
