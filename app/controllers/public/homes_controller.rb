@@ -1,6 +1,8 @@
 class Public::HomesController < ApplicationController
   def top
     @production_areas = ProductionArea.all
+
+    # my_recipeに保存されたレシピ上位3件を表示
     @recipe_rank = Recipe.find(MyRecipe.group(:recipe_id).order('count(recipe_id) desc').limit(3).pluck(:recipe_id))
   end
 

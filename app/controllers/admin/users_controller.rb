@@ -17,12 +17,12 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-      if @user.update(user_params)
-        redirect_to admin_user_path(@user.id), notice: "変更が完了しました"
-      else
-        flash.now[:error] = "空欄があります"
-        render :edit
-      end
+    if @user.update(user_params)
+      redirect_to admin_user_path(@user.id), notice: "変更が完了しました"
+    else
+      flash.now[:error] = "空欄があります"
+      render :edit
+    end
   end
 
   private

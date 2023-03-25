@@ -9,15 +9,15 @@ class Recipe < ApplicationRecord
   has_many :pouring_details, dependent: :destroy
   accepts_nested_attributes_for :pouring_details, reject_if: :all_blank, allow_destroy: true
 
-      validates :production_area_id, presence: true
-      validates :user_id, presence: true
-      validates :name, presence: true
-      validates :coffee_beans_name, presence: true
-      validates :amount, presence: true
-      validates :temperature, presence: true
-      validates :total_extraction_time, presence: true
-      validates :dripper, presence: true
-      validates :paper, presence: true
+  validates :production_area_id, presence: true
+  validates :user_id, presence: true
+  validates :name, presence: true
+  validates :coffee_beans_name, presence: true
+  validates :amount, presence: true
+  validates :temperature, presence: true
+  validates :total_extraction_time, presence: true
+  validates :dripper, presence: true
+  validates :paper, presence: true
 
 
   enum roast: { light_roast: 0, medium_roast: 1, medium_dark_roast: 2 }
