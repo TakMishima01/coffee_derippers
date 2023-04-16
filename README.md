@@ -33,3 +33,4 @@
 - bootstrap4.5
 - fontawesome
 - cocoon
+- ransack
